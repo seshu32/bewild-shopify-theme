@@ -1,105 +1,178 @@
-{% comment %}
-  BeWild Hero Banner Section
-  Replicating the exact Oars template hero design with BeWild brand identity
-{% endcomment %}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag: media: 'all' }}
 
-<div class="hero-banner" id="hero-{{ section.id }}">
-  <!-- Floating Background Elements -->
-  <div class="floating-elements">
-    <div class="floating-bar bar-1"></div>
-    <div class="floating-bar bar-2"></div>
-    <div class="floating-bar bar-3"></div>
-    <div class="floating-bar bar-4"></div>
-    <div class="floating-bar bar-5"></div>
-    <div class="floating-bar bar-6"></div>
-    <div class="floating-bar bar-7"></div>
-    <div class="floating-bar bar-8"></div>
-    <div class="floating-bar bar-9"></div>
-    <div class="floating-bar bar-10"></div>
-    <div class="floating-bar bar-11"></div>
-    <div class="floating-bar bar-12"></div>
-  </div>
-  
-  <!-- Floating Organic Elements -->
-  <div class="organic-elements">
-    <div class="floating-element element-1">🥑</div>
-    <div class="floating-element element-2">🥝</div>
-    <div class="floating-element element-3">🍋</div>
-    <div class="floating-element element-4">🌿</div>
-    <div class="floating-element element-5">🫐</div>
-    <div class="floating-element element-6">🥬</div>
-    <div class="floating-element element-7">🌱</div>
-  </div>
-  
-  <div class="container">
-    <div class="hero-content">
-      
-      <!-- Hero Image/Product -->
-      <div class="hero-image-section">
-        {% if section.settings.hero_image %}
-          <div class="hero-product-image">
-            <img src="{{ section.settings.hero_image | img_url: '600x600' }}" 
-                 alt="{{ section.settings.hero_image.alt | default: 'BeWild Organic Smoothie' }}"
-                 loading="lazy">
-          </div>
-        {% else %}
-          <div class="hero-product-placeholder">
-            <div class="smoothie-glass">
-              <div class="smoothie-liquid"></div>
-              <div class="smoothie-foam"></div>
-              <div class="glass-highlight"></div>
+<div data-section-type="slideshow-section" class="slideshow-section-{{ section.id }} spaced-section spaced-section--full-width zoomIn animated" data-animate="zoomIn" data-delay="100" data-section-name="index-slideshow">
+  <div class="container-fluid">
+    <div class="slideshow-categories__content">
+      <slideshow-component>
+        <div class="slideshow-{{ section.id }} index-slideshow-container" 
+             data-section-id="{{ section.id }}" 
+             data-slideshow-param='{"effect": "slide", "autoplay": {% if section.settings.autoplay %}"{{ section.settings.autoplay_speed }}"{% else %}"false"{% endif %}, "height": "920", "width": "1920"}' 
+             data-index-slideshow="">
+          <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" 
+               data-slideshow-container="" 
+               style="height: 400.104px;">
+            <div class="swiper-wrapper" id="swiper-wrapper-{{ section.id }}" aria-live="polite">
+              
+              {% for block in section.blocks %}
+                <div class="swiper-slide{% if forloop.first %} swiper-slide-active{% endif %}" 
+                     data-slideshow-slide-type="image" 
+                     data-slideshow-slide="" 
+                     data-swiper-slide-index="{{ forloop.index0 }}" 
+                     role="group" 
+                     aria-label="{{ forloop.index }} / {{ section.blocks.size }}">
+                  
+                  <div class="index-slideshow-background">
+                    {% if block.settings.background_image %}
+                      <div class="index-slideshow__background lazyloaded" 
+                           style="height: 0px; padding-bottom: 47.9167%; background-image: url('{{ block.settings.background_image | image_url: width: 3024 }}');" 
+                           data-bgset="{{ block.settings.background_image | image_url: width: 180 }} 180w, {{ block.settings.background_image | image_url: width: 360 }} 360w, {{ block.settings.background_image | image_url: width: 540 }} 540w, {{ block.settings.background_image | image_url: width: 720 }} 720w, {{ block.settings.background_image | image_url: width: 900 }} 900w, {{ block.settings.background_image | image_url: width: 1080 }} 1080w, {{ block.settings.background_image | image_url: width: 1296 }} 1296w, {{ block.settings.background_image | image_url: width: 1512 }} 1512w, {{ block.settings.background_image | image_url: width: 1728 }} 1728w, {{ block.settings.background_image | image_url: width: 1944 }} 1944w, {{ block.settings.background_image | image_url: width: 2160 }} 2160w, {{ block.settings.background_image | image_url: width: 2376 }} 2376w, {{ block.settings.background_image | image_url: width: 2592 }} 2592w, {{ block.settings.background_image | image_url: width: 2808 }} 2808w, {{ block.settings.background_image | image_url: width: 3024 }} 3024w" 
+                           data-ratio="2.0869565217391304" 
+                           data-parent-fit="cover" 
+                           data-slideshow-bkg="">
+                      </div>
+                    {% else %}
+                      <div class="index-slideshow__background default-bg" 
+                           style="height: 0px; padding-bottom: 47.9167%; background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);">
+                      </div>
+                    {% endif %}
+                  </div>
+                  
+                  <div class="index-slideshow-caption-group index-slideshow-caption {{ block.settings.text_position | default: 'position-right-center' }} {{ block.settings.text_align | default: 'align-left' }}">
+                    <div class="animated {{ block.settings.entrance_effect | default: 'slideInRight' }}" 
+                         data-slideshow-caption='{"entranceEffect": "{{ block.settings.entrance_effect | default: 'slideInRight' }}", "exitEffect": "{{ block.settings.exit_effect | default: 'slideOutLeft' }}"}' 
+                         style="position: relative; animation-delay: 0ms;">
+                      
+                      {% if block.settings.subtitle != blank %}
+                        <div class="subtitle-{{ section.id }}-{{ block.id }} index-slideshow-caption-subtitle">
+                          {{ block.settings.subtitle }}
+                        </div>
+                        <style data-shopify="">
+                          .subtitle-{{ section.id }}-{{ block.id }}{
+                            color: {{ block.settings.subtitle_color | default: '#4b3c35' }};
+                          }
+                        </style>
+                      {% endif %}
+                      
+                      {% if block.settings.title != blank %}
+                        <div class="title-{{ section.id }}-{{ block.id }} index-slideshow-caption-title">
+                          {{ block.settings.title }}
+                        </div>
+                        <style data-shopify="">
+                          .title-{{ section.id }}-{{ block.id }}{
+                            color: {{ block.settings.title_color | default: '#344736' }};
+                          }
+                        </style>
+                      {% endif %}
+                      
+                      {% if block.settings.description != blank %}
+                        <div class="description-{{ section.id }}-{{ block.id }} index-slideshow-caption-description">
+                          {{ block.settings.description }}
+                        </div>
+                        <style data-shopify="">
+                          .description-{{ section.id }}-{{ block.id }}{
+                            color: {{ block.settings.description_color | default: '#342e29' }};
+                          }
+                        </style>
+                      {% endif %}
+                      
+                      {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+                        <div class="index-slideshow-caption-action">
+                          <a href="{{ block.settings.button_url }}" 
+                             class="button action-{{ section.id }}-{{ block.id }} flex-container align-middle">
+                            {{ block.settings.button_text }}
+                          </a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
             </div>
+            
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
           </div>
-        {% endif %}
-        
-        <!-- Product Tag -->
-        <div class="product-tag">
-          <div class="product-info">
-            <span class="product-name">{{ section.settings.product_name | default: "Organic Green Smoothie" }}</span>
-            <span class="product-price">${{ section.settings.product_price | default: "12.99" }}</span>
-          </div>
-          <button class="close-tag">×</button>
+          
+          <div class="swiper-wrapper-loader"></div>
+          
+          <!-- Pagination -->
+          {% if section.settings.show_pagination %}
+            <div class="index-slideshow-pagination swiper-pagination-clickable index-slideshow-pagination-bullets" data-slideshow-pagination="">
+              {% for block in section.blocks %}
+                <span class="index-slideshow-pagination-bullet{% if forloop.first %} index-slideshow-pagination-bullet-active{% endif %}" 
+                      tabindex="0" 
+                      role="button" 
+                      aria-label="Go to slide {{ forloop.index }}"></span>
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <!-- Navigation buttons -->
+          {% if section.settings.show_navigation %}
+            <div class="index-slideshow-navigation index-slideshow-nav-prev show-for-large" 
+                 data-slideshow-nav-prev="" 
+                 tabindex="0" 
+                 role="button" 
+                 aria-label="Previous slide" 
+                 aria-controls="swiper-wrapper-{{ section.id }}">
+              <svg class="svg-icon"><use xlink:href="#arrow-left"></use></svg>
+            </div>
+            <div class="index-slideshow-navigation index-slideshow-nav-next show-for-large" 
+                 data-slideshow-nav-next="" 
+                 tabindex="0" 
+                 role="button" 
+                 aria-label="Next slide" 
+                 aria-controls="swiper-wrapper-{{ section.id }}">
+              <svg class="svg-icon"><use xlink:href="#arrow-right"></use></svg>
+            </div>
+          {% endif %}
         </div>
-      </div>
-      
-      <!-- Hero Text Content -->
-      <div class="hero-text-section">
-        <div class="hero-intro">
-          {{ section.settings.hero_intro | default: "We introduce" }}
-        </div>
-        
-        <h1 class="hero-main-title">
-          {{ section.settings.hero_title | default: "BeWild Organic" }}
-        </h1>
-        
-        <p class="hero-description">
-          {{ section.settings.hero_description | default: "Discover the pure essence of nature with our carefully curated collection of organic products. From farm-fresh smoothies to heritage grains, we bring you the finest sustainable nutrition." }}
-        </p>
-        
-        <div class="hero-cta">
-          <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="shop-now-btn">
-            {{ section.settings.cta_text | default: "SHOP NOW" }}
-          </a>
-        </div>
-      </div>
-      
+      </slideshow-component>      
     </div>
   </div>
 </div>
 
 <style>
-  .hero-banner {
-    background: linear-gradient(135deg, #b8dc99 0%, #a8cc89 25%, #98bc79 50%, #88ac69 75%, #78a659 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+  /* Slideshow Section */
+  .slideshow-section-{{ section.id }} {
     position: relative;
     overflow: hidden;
-    padding: 0;
+    background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);
   }
   
-  /* Floating Background Bars */
-  .floating-elements {
+  .slideshow-categories__content {
+    position: relative;
+  }
+  
+  .index-slideshow-container {
+    position: relative;
+    height: 500px;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+  }
+  
+  .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+  }
+  
+  .index-slideshow-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -108,577 +181,468 @@
     z-index: 1;
   }
   
-  .floating-bar {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    animation: floatAnimation 6s ease-in-out infinite;
-  }
-  
-  .bar-1 {
-    width: 120px;
-    height: 10px;
-    top: 10%;
-    left: 35%;
-    animation-delay: 0s;
-    opacity: 0.9;
-  }
-  
-  .bar-2 {
-    width: 80px;
-    height: 10px;
-    top: 15%;
-    left: 25%;
-    animation-delay: 1s;
-    opacity: 0.7;
-  }
-  
-  .bar-3 {
-    width: 160px;
-    height: 10px;
-    top: 22%;
-    left: 45%;
-    animation-delay: 2s;
-    opacity: 0.8;
-  }
-  
-  .bar-4 {
-    width: 70px;
-    height: 10px;
-    top: 28%;
-    left: 20%;
-    animation-delay: 3s;
-    opacity: 0.6;
-  }
-  
-  .bar-5 {
-    width: 140px;
-    height: 10px;
-    top: 35%;
-    left: 40%;
-    animation-delay: 4s;
-    opacity: 0.9;
-  }
-  
-  .bar-6 {
-    width: 100px;
-    height: 10px;
-    top: 42%;
-    left: 30%;
-    animation-delay: 5s;
-    opacity: 0.7;
-  }
-  
-  .bar-7 {
-    width: 90px;
-    height: 10px;
-    top: 50%;
-    left: 50%;
-    animation-delay: 2.5s;
-    opacity: 0.8;
-  }
-  
-  .bar-8 {
-    width: 60px;
-    height: 10px;
-    top: 58%;
-    left: 35%;
-    animation-delay: 1.5s;
-    opacity: 0.6;
-  }
-  
-  .bar-9 {
-    width: 110px;
-    height: 10px;
-    top: 65%;
-    left: 45%;
-    animation-delay: 3.5s;
-    opacity: 0.8;
-  }
-  
-  .bar-10 {
-    width: 75px;
-    height: 10px;
-    top: 72%;
-    left: 25%;
-    animation-delay: 4.5s;
-    opacity: 0.7;
-  }
-  
-  .bar-11 {
-    width: 130px;
-    height: 10px;
-    top: 80%;
-    left: 40%;
-    animation-delay: 0.5s;
-    opacity: 0.6;
-  }
-  
-  .bar-12 {
-    width: 85px;
-    height: 10px;
-    top: 88%;
-    left: 30%;
-    animation-delay: 2.8s;
-    opacity: 0.8;
-  }
-  
-  /* Floating Organic Elements */
-  .organic-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .index-slideshow__background {
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .default-bg {
+    background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);
+  }
+  
+  .index-slideshow-caption-group {
+    position: absolute;
     z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 600px;
+    padding: 40px;
   }
   
-  .floating-element {
-    position: absolute;
-    font-size: 2.5rem;
-    animation: organicFloat 8s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-  }
-  
-  .element-1 { /* Avocado */
-    top: 20%;
-    left: 12%;
-    animation-delay: 0s;
-    font-size: 3rem;
-  }
-  
-  .element-2 { /* Kiwi */
-    bottom: 20%;
-    right: 15%;
-    animation-delay: 2s;
-    font-size: 2.8rem;
-  }
-  
-  .element-3 { /* Lime */
-    top: 15%;
-    right: 8%;
-    animation-delay: 4s;
-    font-size: 2.5rem;
-  }
-  
-  .element-4 { /* Leaves */
-    bottom: 35%;
-    left: 8%;
-    animation-delay: 1s;
-    font-size: 2.2rem;
-  }
-  
-  .element-5 { /* Blueberries */
-    bottom: 8%;
-    right: 30%;
-    animation-delay: 3s;
-    font-size: 2rem;
-  }
-  
-  .element-6 { /* Lettuce */
-    top: 45%;
+  .position-left-center {
     left: 5%;
-    animation-delay: 5s;
-    font-size: 2.3rem;
   }
   
-  .element-7 { /* Sprout */
-    top: 35%;
+  .position-right-center {
     right: 5%;
-    animation-delay: 6s;
-    font-size: 2rem;
   }
   
-  .container {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 10;
+  .position-center-center {
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
   
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    min-height: 85vh;
-    padding: 2rem 0;
+  .align-left {
+    text-align: left;
   }
   
-  /* Hero Image Section */
-  .hero-image-section {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .align-center {
+    text-align: center;
   }
   
-  .hero-product-image img {
-    max-width: 500px;
-    height: auto;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  .align-right {
+    text-align: right;
   }
   
-  .hero-product-placeholder {
-    position: relative;
-    width: 400px;
-    height: 500px;
+  .index-slideshow-caption-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.2;
   }
   
-  .smoothie-glass {
-    width: 300px;
-    height: 450px;
-    background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.2) 0%, 
-      rgba(255, 255, 255, 0.1) 100%);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    border-radius: 8px 8px 15px 15px;
-    position: relative;
-    margin: 0 auto;
-    backdrop-filter: blur(10px);
-    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.3));
-    overflow: hidden;
-  }
-  
-  /* Mason jar lid/top */
-  .smoothie-glass::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    height: 25px;
-    background: linear-gradient(180deg, #86312b 0%, #4b3c35 100%);
-    border-radius: 10px 10px 0 0;
-    z-index: 5;
-  }
-  
-  /* Rope/twine around jar */
-  .smoothie-glass::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: -8px;
-    right: -8px;
-    height: 40px;
-    background: repeating-linear-gradient(
-      90deg,
-      #ffcf83 0px,
-      #ff774a 3px,
-      #ffcf83 6px
-    );
-    border-radius: 50%;
-    transform: rotate(5deg);
-    z-index: 6;
-  }
-  
-  .smoothie-liquid {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 75%;
-    background: linear-gradient(180deg, 
-      #b8dc99 0%,
-      #88ac69 25%,
-      #78a659 50%,
-      #68964a 75%,
-      #58863a 100%);
-    border-radius: 5px 5px 12px 12px;
-    box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  .smoothie-foam {
-    position: absolute;
-    top: 22%;
-    left: 10%;
-    right: 10%;
-    height: 6%;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 50%;
-    filter: blur(1.5px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .glass-highlight {
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    width: 20%;
-    height: 45%;
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.5) 0%, 
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%);
-    border-radius: 10px;
-    filter: blur(1px);
-  }
-  
-  /* Product Tag */
-  .product-tag {
-    position: absolute;
-    top: 25%;
-    right: -60px;
-    background: white;
-    padding: 1.2rem 1.8rem;
-    border-radius: 18px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    min-width: 220px;
-    z-index: 10;
-  }
-  
-  .product-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .product-name {
-    font-weight: 600;
-    color: #342e29; /* Assertive dark brown from brand palette */
-    font-size: 0.9rem;
-  }
-  
-  .product-price {
-    color: #86312b; /* Assertive red-brown from brand palette */
+  .index-slideshow-caption-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 56px;
     font-weight: 700;
-    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
   }
   
-  .close-tag {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: #999;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-    display: flex;
+  .index-slideshow-caption-description {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 500px;
+  }
+  
+  .index-slideshow-caption-action .button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  /* Hero Text Section */
-  .hero-text-section {
-    padding-left: 1.5rem;
-    padding-right: 1rem;
-  }
-  
-  .hero-intro {
-    font-size: 1.6rem;
-    color: #4b3c35; /* Authentic color from brand palette */
-    font-style: italic;
-    margin-bottom: 0.8rem;
-    font-family: Georgia, serif;
-    font-weight: 400;
-  }
-  
-  .hero-main-title {
-    font-size: 4.8rem;
-    font-weight: 800;
-    color: #344736; /* Assertive green from brand palette */
-    line-height: 0.95;
-    margin-bottom: 1.8rem;
-    font-family: system-ui, -apple-system, sans-serif;
-    letter-spacing: -0.02em;
-  }
-  
-  .hero-description {
-    font-size: 1.05rem;
-    color: #342e29; /* Assertive dark brown from brand palette */
-    line-height: 1.65;
-    margin-bottom: 2.8rem;
-    max-width: 480px;
-    font-weight: 400;
-  }
-  
-  .shop-now-btn {
-    background: #86312b; /* Assertive red-brown from brand palette */
+    padding: 15px 35px;
+    background-color: #86312b;
     color: white;
-    padding: 1.1rem 2.8rem;
-    text-decoration: none;
-    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
     font-weight: 600;
-    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
     transition: all 0.3s ease;
-    display: inline-block;
+    letter-spacing: 1px;
+  }
+  
+  .index-slideshow-caption-action .button:hover {
+    background-color: #9e3430;
+    transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(134, 49, 43, 0.3);
   }
   
-  .shop-now-btn:hover {
-    background: #9e3430; /* Authentic red from brand palette */
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(158, 52, 48, 0.5);
+  /* Pagination */
+  .index-slideshow-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 10px;
   }
   
-  /* Animations */
-  @keyframes floatAnimation {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(2deg); }
+  .index-slideshow-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
   
-  @keyframes organicFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-15px) rotate(5deg); }
-    66% { transform: translateY(-10px) rotate(-3deg); }
+  .index-slideshow-pagination-bullet-active {
+    background-color: #86312b;
+    transform: scale(1.2);
   }
   
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    .hero-content {
-      gap: 2rem;
-    }
-    
-    .hero-main-title {
-      font-size: 3.5rem;
-    }
-    
-    .product-tag {
-      right: -30px;
-    }
+  /* Navigation */
+  .index-slideshow-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
   
+  .index-slideshow-nav-prev {
+    left: 20px;
+  }
+  
+  .index-slideshow-nav-next {
+    right: 20px;
+  }
+  
+  .index-slideshow-navigation:hover {
+    background-color: #86312b;
+    color: white;
+  }
+  
+  .svg-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Animation effects */
+  .animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translate3d(-100%, 0, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translate3d(100%, 0, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  
+  @keyframes slideOutLeft {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translate3d(-100%, 0, 0); }
+  }
+  
+  @keyframes slideOutRight {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translate3d(100%, 0, 0); }
+  }
+  
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
+    50% { opacity: 1; }
+  }
+  
+  .slideInLeft { animation-name: slideInLeft; }
+  .slideInRight { animation-name: slideInRight; }
+  .slideOutLeft { animation-name: slideOutLeft; }
+  .slideOutRight { animation-name: slideOutRight; }
+  .zoomIn { animation-name: zoomIn; }
+  
+  /* Responsive */
   @media (max-width: 768px) {
-    .hero-content {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      text-align: center;
+    .index-slideshow-caption-title {
+      font-size: 36px;
     }
     
-    .hero-image-section {
-      order: 2;
+    .index-slideshow-caption-subtitle {
+      font-size: 20px;
     }
     
-    .hero-text-section {
-      order: 1;
-      padding-left: 0;
+    .index-slideshow-caption-description {
+      font-size: 14px;
     }
     
-    .hero-main-title {
-      font-size: 3rem;
+    .index-slideshow-caption-group {
+      padding: 20px;
+      max-width: 90%;
     }
     
-    .hero-intro {
-      font-size: 1.4rem;
-    }
-    
-    .product-tag {
-      position: static;
-      margin: 2rem auto 0;
-      justify-content: center;
-    }
-    
-    .smoothie-glass {
-      width: 250px;
-      height: 375px;
-    }
-    
-    .floating-element {
-      font-size: 2rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .hero-main-title {
-      font-size: 2.5rem;
-    }
-    
-    .hero-intro {
-      font-size: 1.2rem;
-    }
-    
-    .hero-description {
-      font-size: 1rem;
-    }
-    
-    .hero-banner {
-      min-height: 90vh;
-    }
-    
-    .smoothie-glass {
-      width: 200px;
-      height: 300px;
-    }
-    
-    .floating-element {
-      font-size: 1.5rem;
-    }
-    
-    .floating-bar {
-      display: none; /* Hide bars on very small screens */
+    .show-for-large {
+      display: none !important;
     }
   }
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const swiperContainer = document.querySelector('[data-slideshow-container]');
+    if (swiperContainer) {
+      // Simple slideshow functionality
+      let currentSlide = 0;
+      const slides = swiperContainer.querySelectorAll('.swiper-slide');
+      const bullets = document.querySelectorAll('.index-slideshow-pagination-bullet');
+      const prevBtn = document.querySelector('[data-slideshow-nav-prev]');
+      const nextBtn = document.querySelector('[data-slideshow-nav-next]');
+      
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('swiper-slide-active', i === index);
+        });
+        bullets.forEach((bullet, i) => {
+          bullet.classList.toggle('index-slideshow-pagination-bullet-active', i === index);
+        });
+        currentSlide = index;
+      }
+      
+      function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+      }
+      
+      function prevSlide() {
+        const prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev);
+      }
+      
+      // Navigation event listeners
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+      
+      // Pagination event listeners
+      bullets.forEach((bullet, index) => {
+        bullet.addEventListener('click', () => showSlide(index));
+      });
+      
+      {% if section.settings.autoplay %}
+        // Auto-advance slides
+        setInterval(nextSlide, {{ section.settings.autoplay_speed | default: 6000 }});
+      {% endif %}
+    }
+  });
+</script>
+
 {% schema %}
 {
-  "name": "Hero Banner",
+  "name": "Hero Banner Slideshow",
+  "tag": "section",
+  "class": "hero-section",
   "settings": [
     {
-      "type": "header",
-      "content": "Hero Content"
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto-advance slides",
+      "default": false
     },
     {
-      "type": "text",
-      "id": "hero_intro",
-      "label": "Hero Introduction Text",
-      "default": "We introduce"
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3000,
+      "max": 10000,
+      "step": 1000,
+      "unit": "ms",
+      "label": "Auto-advance speed",
+      "default": 6000
     },
     {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Hero Main Title",
-      "default": "BeWild Organic"
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination dots",
+      "default": true
     },
     {
-      "type": "textarea",
-      "id": "hero_description",
-      "label": "Hero Description",
-      "default": "Discover the pure essence of nature with our carefully curated collection of organic products. From farm-fresh smoothies to heritage grains, we bring you the finest sustainable nutrition."
-    },
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation arrows",
+      "default": true
+    }
+  ],
+  "blocks": [
     {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Button Text",
-      "default": "SHOP NOW"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "CTA Button Link",
-      "default": "/collections/all"
-    },
-    {
-      "type": "header",
-      "content": "Product Showcase"
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Product Image",
-      "info": "Upload a product image or leave blank to show the default smoothie glass"
-    },
-    {
-      "type": "text",
-      "id": "product_name",
-      "label": "Product Tag Name",
-      "default": "Organic Green Smoothie"
-    },
-    {
-      "type": "text",
-      "id": "product_price",
-      "label": "Product Tag Price",
-      "default": "12.99"
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "We introduction"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle Color",
+          "default": "#4b3c35"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "BeWild Organic"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#344736"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Discover the pure essence of nature with our carefully curated collection of organic products, sourced directly from sustainable farms and wild harvesting practices."
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description Color",
+          "default": "#342e29"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "SHOP NOW"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL",
+          "default": "/collections/all"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Text Position",
+          "options": [
+            {
+              "value": "position-left-center",
+              "label": "Left Center"
+            },
+            {
+              "value": "position-right-center",
+              "label": "Right Center"
+            },
+            {
+              "value": "position-center-center",
+              "label": "Center Center"
+            }
+          ],
+          "default": "position-right-center"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "align-left",
+              "label": "Left"
+            },
+            {
+              "value": "align-center",
+              "label": "Center"
+            },
+            {
+              "value": "align-right",
+              "label": "Right"
+            }
+          ],
+          "default": "align-left"
+        },
+        {
+          "type": "select",
+          "id": "entrance_effect",
+          "label": "Entrance Animation",
+          "options": [
+            {
+              "value": "slideInLeft",
+              "label": "Slide In Left"
+            },
+            {
+              "value": "slideInRight",
+              "label": "Slide In Right"
+            }
+          ],
+          "default": "slideInRight"
+        },
+        {
+          "type": "select",
+          "id": "exit_effect",
+          "label": "Exit Animation",
+          "options": [
+            {
+              "value": "slideOutLeft",
+              "label": "Slide Out Left"
+            },
+            {
+              "value": "slideOutRight",
+              "label": "Slide Out Right"
+            }
+          ],
+          "default": "slideOutLeft"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Hero Banner"
+      "name": "Hero Banner Slideshow",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "subtitle": "We introduction",
+            "title": "BeWild Organic",
+            "description": "Discover the pure essence of nature with our carefully curated collection of organic products, sourced directly from sustainable farms and wild harvesting practices.",
+            "button_text": "SHOP NOW",
+            "button_url": "/collections/all",
+            "text_position": "position-right-center",
+            "entrance_effect": "slideInRight"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "subtitle": "We introduction",
+            "title": "BeWild Organic",
+            "description": "Experience the authentic taste of wild-harvested ingredients and organic produce that connects you directly with nature's bounty.",
+            "button_text": "SHOP NOW",
+            "button_url": "/collections/all",
+            "text_position": "position-left-center",
+            "entrance_effect": "slideInLeft"
+          }
+        }
+      ]
     }
   ]
 }
