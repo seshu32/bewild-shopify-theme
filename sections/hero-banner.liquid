@@ -85,12 +85,13 @@
 
 <style>
   .hero-banner {
-    background: linear-gradient(135deg, #b8dc99 0%, #a8cc89 50%, #98bc79 100%);
+    background: linear-gradient(135deg, #b8dc99 0%, #a8cc89 30%, #98bc79 60%, #88ac69 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding: 0;
   }
   
   /* Floating Background Bars */
@@ -111,67 +112,75 @@
   }
   
   .bar-1 {
-    width: 120px;
+    width: 140px;
     height: 8px;
-    top: 15%;
-    left: 20%;
+    top: 12%;
+    right: 20%;
     animation-delay: 0s;
+    opacity: 0.9;
   }
   
   .bar-2 {
-    width: 80px;
+    width: 60px;
     height: 8px;
-    top: 25%;
-    left: 35%;
+    top: 18%;
+    right: 45%;
     animation-delay: 1s;
+    opacity: 0.7;
   }
   
   .bar-3 {
-    width: 160px;
+    width: 180px;
     height: 8px;
-    top: 35%;
-    left: 45%;
+    top: 25%;
+    right: 15%;
     animation-delay: 2s;
+    opacity: 0.8;
   }
   
   .bar-4 {
-    width: 100px;
+    width: 90px;
     height: 8px;
-    top: 45%;
-    left: 25%;
+    top: 32%;
+    right: 35%;
     animation-delay: 3s;
+    opacity: 0.6;
   }
   
   .bar-5 {
-    width: 140px;
+    width: 160px;
     height: 8px;
-    top: 55%;
-    left: 40%;
+    top: 40%;
+    right: 10%;
     animation-delay: 4s;
+    opacity: 0.9;
   }
   
   .bar-6 {
-    width: 90px;
+    width: 80px;
     height: 8px;
-    top: 65%;
-    left: 30%;
+    top: 55%;
+    right: 40%;
     animation-delay: 5s;
+    opacity: 0.7;
   }
   
   .bar-7 {
-    width: 110px;
+    width: 120px;
     height: 8px;
-    top: 75%;
-    left: 50%;
+    top: 70%;
+    right: 25%;
     animation-delay: 2.5s;
+    opacity: 0.8;
   }
   
   .bar-8 {
-    width: 70px;
+    width: 50px;
     height: 8px;
     top: 85%;
-    left: 35%;
+    right: 50%;
     animation-delay: 1.5s;
+    opacity: 0.6;
   }
   
   /* Floating Organic Elements */
@@ -193,44 +202,51 @@
   
   .element-1 { /* Avocado */
     top: 20%;
-    left: 10%;
+    left: 12%;
     animation-delay: 0s;
+    font-size: 3rem;
   }
   
   .element-2 { /* Kiwi */
-    top: 70%;
-    right: 20%;
+    bottom: 20%;
+    right: 15%;
     animation-delay: 2s;
+    font-size: 2.8rem;
   }
   
   .element-3 { /* Lime */
     top: 15%;
-    right: 15%;
+    right: 8%;
     animation-delay: 4s;
+    font-size: 2.5rem;
   }
   
   .element-4 { /* Leaves */
-    top: 60%;
+    bottom: 35%;
     left: 8%;
     animation-delay: 1s;
+    font-size: 2.2rem;
   }
   
   .element-5 { /* Blueberries */
-    top: 80%;
-    right: 35%;
+    bottom: 8%;
+    right: 30%;
     animation-delay: 3s;
+    font-size: 2rem;
   }
   
   .element-6 { /* Lettuce */
-    top: 40%;
+    top: 45%;
     left: 5%;
     animation-delay: 5s;
+    font-size: 2.3rem;
   }
   
   .element-7 { /* Sprout */
-    top: 30%;
-    right: 10%;
+    top: 35%;
+    right: 5%;
     animation-delay: 6s;
+    font-size: 2rem;
   }
   
   .container {
@@ -244,9 +260,10 @@
   .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 3rem;
     align-items: center;
-    min-height: 80vh;
+    min-height: 85vh;
+    padding: 2rem 0;
   }
   
   /* Hero Image Section */
@@ -270,17 +287,18 @@
   }
   
   .smoothie-glass {
-    width: 300px;
-    height: 450px;
+    width: 280px;
+    height: 420px;
     background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.3) 0%, 
-      rgba(255, 255, 255, 0.1) 100%);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    border-radius: 15px 15px 25px 25px;
+      rgba(255, 255, 255, 0.15) 0%, 
+      rgba(255, 255, 255, 0.05) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px 12px 35px 35px;
     position: relative;
     margin: 0 auto;
-    backdrop-filter: blur(10px);
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    backdrop-filter: blur(15px);
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.25));
+    overflow: hidden;
   }
   
   .smoothie-liquid {
@@ -288,49 +306,57 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 75%;
+    height: 78%;
     background: linear-gradient(180deg, 
-      #7eb069 0%, 
-      #5a8f4a 100%);
-    border-radius: 12px 12px 22px 22px;
+      #6bb54a 0%,
+      #5da63f 25%,
+      #4f9635 50%,
+      #41872b 75%,
+      #337821 100%);
+    border-radius: 10px 10px 33px 33px;
+    box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.1);
   }
   
   .smoothie-foam {
     position: absolute;
-    top: 20%;
-    left: 5%;
-    right: 5%;
-    height: 10%;
-    background: rgba(255, 255, 255, 0.8);
+    top: 18%;
+    left: 8%;
+    right: 8%;
+    height: 8%;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    filter: blur(2px);
+    filter: blur(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   .glass-highlight {
     position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 30%;
-    height: 60%;
+    top: 15%;
+    left: 15%;
+    width: 25%;
+    height: 50%;
     background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.3) 0%, 
-      transparent 50%);
-    border-radius: 10px;
+      rgba(255, 255, 255, 0.4) 0%, 
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
+    border-radius: 8px;
+    filter: blur(0.5px);
   }
   
   /* Product Tag */
   .product-tag {
     position: absolute;
-    top: 20%;
-    right: -50px;
+    top: 25%;
+    right: -60px;
     background: white;
-    padding: 1rem 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 1.2rem 1.8rem;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
-    gap: 1rem;
-    min-width: 200px;
+    gap: 1.2rem;
+    min-width: 220px;
+    z-index: 10;
   }
   
   .product-info {
@@ -365,52 +391,57 @@
   
   /* Hero Text Section */
   .hero-text-section {
-    padding-left: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
   }
   
   .hero-intro {
-    font-size: 1.8rem;
-    color: rgba(52, 46, 41, 0.8);
+    font-size: 1.6rem;
+    color: rgba(52, 46, 41, 0.75);
     font-style: italic;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-family: Georgia, serif;
+    font-weight: 400;
   }
   
   .hero-main-title {
-    font-size: 4.5rem;
-    font-weight: 700;
-    color: #344736;
-    line-height: 1;
-    margin-bottom: 2rem;
+    font-size: 4.8rem;
+    font-weight: 800;
+    color: #2d3e2f;
+    line-height: 0.95;
+    margin-bottom: 1.8rem;
     font-family: system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
   }
   
   .hero-description {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #4b3c35;
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    max-width: 500px;
+    line-height: 1.65;
+    margin-bottom: 2.8rem;
+    max-width: 480px;
+    font-weight: 400;
   }
   
   .shop-now-btn {
     background: #9eb680;
     color: white;
-    padding: 1rem 2.5rem;
+    padding: 1.1rem 2.8rem;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     transition: all 0.3s ease;
     display: inline-block;
+    box-shadow: 0 4px 15px rgba(158, 182, 128, 0.3);
   }
   
   .shop-now-btn:hover {
     background: #8ea670;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(158, 182, 128, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(158, 182, 128, 0.5);
   }
   
   /* Animations */
