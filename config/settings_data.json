@@ -1,12 +1,134 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "current": {}
+  "current": {
+    "colors_solid_button_labels": "#ffffff",
+    "colors_accent_1": "#86312b",
+    "colors_accent_2": "#344736",
+    "colors_text": "#342e29",
+    "colors_outline_button_labels": "#86312b",
+    "colors_background_1": "#ffffff",
+    "colors_background_2": "#f8f8f8",
+    "type_header_font": "montserrat_n4",
+    "type_body_font": "open_sans_n4",
+    "currency_code_enabled": true,
+    "social_facebook_link": "https://facebook.com/bewild",
+    "social_instagram_link": "https://instagram.com/bewild",
+    "social_youtube_link": "https://youtube.com/bewild",
+    "social_tiktok_link": "https://tiktok.com/bewild",
+    "social_twitter_link": "https://twitter.com/bewild",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "color_scheme": "background-1",
+          "logo": "shopify://shop_images/Bewild_Logo.jpg",
+          "logo_width": 60,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "menu_type_desktop": "dropdown",
+          "enable_country_selector": false,
+          "enable_language_selector": false
+        }
+      },
+      "hero-banner": {
+        "type": "hero-banner",
+        "blocks": {
+          "slide-1": {
+            "type": "slide",
+            "settings": {
+              "subtitle": "We introduction",
+              "subtitle_color": "#4b3c35",
+              "title": "BeWild Organic",
+              "title_color": "#344736",
+              "description": "Discover the pure essence of nature with our carefully curated collection of organic products, sourced directly from sustainable farms and wild harvesting practices.",
+              "description_color": "#342e29",
+              "button_text": "SHOP NOW",
+              "button_url": "/collections/all",
+              "text_position": "position-right-center",
+              "text_align": "align-left",
+              "entrance_effect": "slideInRight",
+              "exit_effect": "slideOutLeft"
+            }
+          },
+          "slide-2": {
+            "type": "slide",
+            "settings": {
+              "subtitle": "We introduction",
+              "subtitle_color": "#4b3c35",
+              "title": "BeWild Organic",
+              "title_color": "#344736",
+              "description": "Experience the authentic taste of wild-harvested ingredients and organic produce that connects you directly with nature's bounty.",
+              "description_color": "#342e29",
+              "button_text": "SHOP NOW",
+              "button_url": "/collections/all",
+              "text_position": "position-left-center",
+              "text_align": "align-left",
+              "entrance_effect": "slideInLeft",
+              "exit_effect": "slideOutRight"
+            }
+          }
+        },
+        "block_order": ["slide-1", "slide-2"],
+        "settings": {
+          "autoplay": false,
+          "autoplay_speed": 6000,
+          "show_pagination": true,
+          "show_navigation": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
+          },
+          "footer-1": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Info",
+              "menu": "footer"
+            }
+          },
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "heading": "Our mission",
+              "subtext": "<p>Bringing nature's finest to your table through sustainable and wild harvesting practices.</p>"
+            }
+          }
+        },
+        "block_order": ["footer-0", "footer-1", "footer-2"],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Subscribe to our emails",
+          "enable_follow_on_shop": true,
+          "show_social": true,
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "payment_enable": true,
+          "show_policy": false,
+          "margin_top": 48,
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "colors_solid_button_labels": "#ffffff",
+      "colors_accent_1": "#86312b",
+      "colors_accent_2": "#344736",
+      "colors_text": "#342e29",
+      "colors_outline_button_labels": "#86312b",
+      "colors_background_1": "#ffffff",
+      "colors_background_2": "#f8f8f8",
+      "type_header_font": "montserrat_n4",
+      "type_body_font": "open_sans_n4"
+    }
+  }
 }
