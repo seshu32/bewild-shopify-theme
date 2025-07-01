@@ -14,6 +14,10 @@
     <div class="floating-bar bar-6"></div>
     <div class="floating-bar bar-7"></div>
     <div class="floating-bar bar-8"></div>
+    <div class="floating-bar bar-9"></div>
+    <div class="floating-bar bar-10"></div>
+    <div class="floating-bar bar-11"></div>
+    <div class="floating-bar bar-12"></div>
   </div>
   
   <!-- Floating Organic Elements -->
@@ -85,7 +89,7 @@
 
 <style>
   .hero-banner {
-    background: linear-gradient(135deg, #b8dc99 0%, #a8cc89 30%, #98bc79 60%, #88ac69 100%);
+    background: linear-gradient(135deg, #b8dc99 0%, #a8cc89 25%, #98bc79 50%, #88ac69 75%, #78a659 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -112,75 +116,111 @@
   }
   
   .bar-1 {
-    width: 140px;
-    height: 8px;
-    top: 12%;
-    right: 20%;
+    width: 120px;
+    height: 10px;
+    top: 10%;
+    left: 35%;
     animation-delay: 0s;
     opacity: 0.9;
   }
   
   .bar-2 {
-    width: 60px;
-    height: 8px;
-    top: 18%;
-    right: 45%;
+    width: 80px;
+    height: 10px;
+    top: 15%;
+    left: 25%;
     animation-delay: 1s;
     opacity: 0.7;
   }
   
   .bar-3 {
-    width: 180px;
-    height: 8px;
-    top: 25%;
-    right: 15%;
+    width: 160px;
+    height: 10px;
+    top: 22%;
+    left: 45%;
     animation-delay: 2s;
     opacity: 0.8;
   }
   
   .bar-4 {
-    width: 90px;
-    height: 8px;
-    top: 32%;
-    right: 35%;
+    width: 70px;
+    height: 10px;
+    top: 28%;
+    left: 20%;
     animation-delay: 3s;
     opacity: 0.6;
   }
   
   .bar-5 {
-    width: 160px;
-    height: 8px;
-    top: 40%;
-    right: 10%;
+    width: 140px;
+    height: 10px;
+    top: 35%;
+    left: 40%;
     animation-delay: 4s;
     opacity: 0.9;
   }
   
   .bar-6 {
-    width: 80px;
-    height: 8px;
-    top: 55%;
-    right: 40%;
+    width: 100px;
+    height: 10px;
+    top: 42%;
+    left: 30%;
     animation-delay: 5s;
     opacity: 0.7;
   }
   
   .bar-7 {
-    width: 120px;
-    height: 8px;
-    top: 70%;
-    right: 25%;
+    width: 90px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
     animation-delay: 2.5s;
     opacity: 0.8;
   }
   
   .bar-8 {
-    width: 50px;
-    height: 8px;
-    top: 85%;
-    right: 50%;
+    width: 60px;
+    height: 10px;
+    top: 58%;
+    left: 35%;
     animation-delay: 1.5s;
     opacity: 0.6;
+  }
+  
+  .bar-9 {
+    width: 110px;
+    height: 10px;
+    top: 65%;
+    left: 45%;
+    animation-delay: 3.5s;
+    opacity: 0.8;
+  }
+  
+  .bar-10 {
+    width: 75px;
+    height: 10px;
+    top: 72%;
+    left: 25%;
+    animation-delay: 4.5s;
+    opacity: 0.7;
+  }
+  
+  .bar-11 {
+    width: 130px;
+    height: 10px;
+    top: 80%;
+    left: 40%;
+    animation-delay: 0.5s;
+    opacity: 0.6;
+  }
+  
+  .bar-12 {
+    width: 85px;
+    height: 10px;
+    top: 88%;
+    left: 30%;
+    animation-delay: 2.8s;
+    opacity: 0.8;
   }
   
   /* Floating Organic Elements */
@@ -287,18 +327,50 @@
   }
   
   .smoothie-glass {
-    width: 280px;
-    height: 420px;
+    width: 300px;
+    height: 450px;
     background: linear-gradient(180deg, 
-      rgba(255, 255, 255, 0.15) 0%, 
-      rgba(255, 255, 255, 0.05) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px 12px 35px 35px;
+      rgba(255, 255, 255, 0.2) 0%, 
+      rgba(255, 255, 255, 0.1) 100%);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px 8px 15px 15px;
     position: relative;
     margin: 0 auto;
-    backdrop-filter: blur(15px);
-    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.25));
+    backdrop-filter: blur(10px);
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.3));
     overflow: hidden;
+  }
+  
+  /* Mason jar lid/top */
+  .smoothie-glass::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    height: 25px;
+    background: linear-gradient(180deg, #86312b 0%, #4b3c35 100%);
+    border-radius: 10px 10px 0 0;
+    z-index: 5;
+  }
+  
+  /* Rope/twine around jar */
+  .smoothie-glass::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -8px;
+    right: -8px;
+    height: 40px;
+    background: repeating-linear-gradient(
+      90deg,
+      #ffcf83 0px,
+      #ff774a 3px,
+      #ffcf83 6px
+    );
+    border-radius: 50%;
+    transform: rotate(5deg);
+    z-index: 6;
   }
   
   .smoothie-liquid {
@@ -306,41 +378,41 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 78%;
+    height: 75%;
     background: linear-gradient(180deg, 
-      #6bb54a 0%,
-      #5da63f 25%,
-      #4f9635 50%,
-      #41872b 75%,
-      #337821 100%);
-    border-radius: 10px 10px 33px 33px;
-    box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.1);
+      #b8dc99 0%,
+      #88ac69 25%,
+      #78a659 50%,
+      #68964a 75%,
+      #58863a 100%);
+    border-radius: 5px 5px 12px 12px;
+    box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.1);
   }
   
   .smoothie-foam {
     position: absolute;
-    top: 18%;
-    left: 8%;
-    right: 8%;
-    height: 8%;
-    background: rgba(255, 255, 255, 0.9);
+    top: 22%;
+    left: 10%;
+    right: 10%;
+    height: 6%;
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 50%;
-    filter: blur(1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    filter: blur(1.5px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   }
   
   .glass-highlight {
     position: absolute;
-    top: 15%;
-    left: 15%;
-    width: 25%;
-    height: 50%;
+    top: 25%;
+    left: 20%;
+    width: 20%;
+    height: 45%;
     background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.4) 0%, 
-      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.5) 0%, 
+      rgba(255, 255, 255, 0.2) 50%,
       transparent 100%);
-    border-radius: 8px;
-    filter: blur(0.5px);
+    border-radius: 10px;
+    filter: blur(1px);
   }
   
   /* Product Tag */
@@ -366,12 +438,12 @@
   
   .product-name {
     font-weight: 600;
-    color: #344736;
+    color: #342e29; /* Assertive dark brown from brand palette */
     font-size: 0.9rem;
   }
   
   .product-price {
-    color: #86312b;
+    color: #86312b; /* Assertive red-brown from brand palette */
     font-weight: 700;
     font-size: 1.1rem;
   }
@@ -397,7 +469,7 @@
   
   .hero-intro {
     font-size: 1.6rem;
-    color: rgba(52, 46, 41, 0.75);
+    color: #4b3c35; /* Authentic color from brand palette */
     font-style: italic;
     margin-bottom: 0.8rem;
     font-family: Georgia, serif;
@@ -407,7 +479,7 @@
   .hero-main-title {
     font-size: 4.8rem;
     font-weight: 800;
-    color: #2d3e2f;
+    color: #344736; /* Assertive green from brand palette */
     line-height: 0.95;
     margin-bottom: 1.8rem;
     font-family: system-ui, -apple-system, sans-serif;
@@ -416,7 +488,7 @@
   
   .hero-description {
     font-size: 1.05rem;
-    color: #4b3c35;
+    color: #342e29; /* Assertive dark brown from brand palette */
     line-height: 1.65;
     margin-bottom: 2.8rem;
     max-width: 480px;
@@ -424,7 +496,7 @@
   }
   
   .shop-now-btn {
-    background: #9eb680;
+    background: #86312b; /* Assertive red-brown from brand palette */
     color: white;
     padding: 1.1rem 2.8rem;
     text-decoration: none;
@@ -435,13 +507,13 @@
     letter-spacing: 0.8px;
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(158, 182, 128, 0.3);
+    box-shadow: 0 4px 15px rgba(134, 49, 43, 0.3);
   }
   
   .shop-now-btn:hover {
-    background: #8ea670;
+    background: #9e3430; /* Authentic red from brand palette */
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(158, 182, 128, 0.5);
+    box-shadow: 0 12px 30px rgba(158, 52, 48, 0.5);
   }
   
   /* Animations */
