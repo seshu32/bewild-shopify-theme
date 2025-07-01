@@ -1,0 +1,476 @@
+{% comment %}
+  BeWild Team Experts Section
+  Section 7 from BeWild Website Copy - "The Brilliant Minds Behind BeWild's Mission"
+{% endcomment %}
+
+<div class="team-experts-section" id="team-{{ section.id }}">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-heading">
+        {{ section.settings.section_heading | default: "The Brilliant Minds Behind BeWild's Mission" }}
+      </h2>
+      <p class="section-description">
+        {{ section.settings.section_description | default: "Transforming agriculture with expertise, care, and a commitment to nature." }}
+      </p>
+    </div>
+    
+    <div class="experts-grid">
+      <!-- Dr. Shekhar Kolipaka -->
+      <div class="expert-card">
+        {% if section.settings.expert_1_image %}
+          <div class="expert-image">
+            <img src="{{ section.settings.expert_1_image | img_url: '400x400' }}" 
+                 alt="{{ section.settings.expert_1_name | default: 'Dr. Shekhar Kolipaka' }}"
+                 loading="lazy">
+          </div>
+        {% else %}
+          <div class="expert-placeholder">
+            <div class="expert-icon">🌿</div>
+          </div>
+        {% endif %}
+        
+        <div class="expert-content">
+          <h3 class="expert-name">
+            {{ section.settings.expert_1_name | default: "Dr. Shekhar Kolipaka" }}
+          </h3>
+          <p class="expert-title">
+            {{ section.settings.expert_1_title | default: "Holistic Landscape Restoration Expert & Biosocial Conservationist" }}
+          </p>
+          <p class="expert-bio">
+            {{ section.settings.expert_1_bio | default: "Leading landscape restoration at Beforest, he weaves biodiversity enhancement & sustainable farming, fostering human-animal harmony while championing regenerative ecosystems." }}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Geetu Mohnani -->
+      <div class="expert-card">
+        {% if section.settings.expert_2_image %}
+          <div class="expert-image">
+            <img src="{{ section.settings.expert_2_image | img_url: '400x400' }}" 
+                 alt="{{ section.settings.expert_2_name | default: 'Geetu Mohnani' }}"
+                 loading="lazy">
+          </div>
+        {% else %}
+          <div class="expert-placeholder">
+            <div class="expert-icon">☕</div>
+          </div>
+        {% endif %}
+        
+        <div class="expert-content">
+          <h3 class="expert-name">
+            {{ section.settings.expert_2_name | default: "Geetu Mohnani" }}
+          </h3>
+          <p class="expert-title">
+            {{ section.settings.expert_2_title | default: "Coffee Specialist & Consultant, Specialty Coffee Trainer" }}
+          </p>
+          <p class="expert-bio">
+            {{ section.settings.expert_2_bio | default: "Founder of All 'Bout Coffee and an India Barista Champion, Geetu brings expertise in brewing world-class specialty coffee, blending innovation, passion, and perfection in every cup." }}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Marc Tormo -->
+      <div class="expert-card">
+        {% if section.settings.expert_3_image %}
+          <div class="expert-image">
+            <img src="{{ section.settings.expert_3_image | img_url: '400x400' }}" 
+                 alt="{{ section.settings.expert_3_name | default: 'Marc Tormo' }}"
+                 loading="lazy">
+          </div>
+        {% else %}
+          <div class="expert-placeholder">
+            <div class="expert-icon">🌍</div>
+          </div>
+        {% endif %}
+        
+        <div class="expert-content">
+          <h3 class="expert-name">
+            {{ section.settings.expert_3_name | default: "Marc Tormo" }}
+          </h3>
+          <p class="expert-title">
+            {{ section.settings.expert_3_title | default: "Coffee Fermentation & Post-Harvesting Techniques Expert" }}
+          </p>
+          <p class="expert-bio">
+            {{ section.settings.expert_3_bio | default: "With over 20 years of experience, Marc has elevated Indian specialty coffees worldwide through unique processing & fermentation techniques, bringing out rich, flavorful brews." }}
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section-footer">
+      <a href="{{ section.settings.about_link | default: '/pages/about' }}" class="btn btn-primary">
+        {{ section.settings.about_text | default: "Learn More About Our Story" }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .team-experts-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #b8dc99 0%, #b0ddf1 50%, #ffcf83 100%); /* Approachable colors */
+    position: relative;
+  }
+  
+  .team-experts-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .section-description {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #86312b; /* Assertive red-brown */
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .experts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+  
+  .expert-card {
+    background: white;
+    border-radius: 25px;
+    padding: 0;
+    box-shadow: 0 20px 50px rgba(52, 46, 41, 0.15);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    border: 3px solid transparent;
+    position: relative;
+  }
+  
+  .expert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #344736, #86312b, #ffcf83, #b8dc99);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: center;
+    z-index: 1;
+  }
+  
+  .expert-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .expert-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 70px rgba(52, 46, 41, 0.25);
+    border-color: #ff774a; /* Approachable orange */
+  }
+  
+  .expert-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: #f8f6f4;
+  }
+  
+  .expert-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .expert-card:hover .expert-image img {
+    transform: scale(1.05);
+  }
+  
+  .expert-placeholder {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, #f8f6f4, #ffcf83);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .expert-icon {
+    font-size: 6rem;
+    opacity: 0.6;
+  }
+  
+  .expert-content {
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .expert-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  
+  .expert-title {
+    font-size: 1.1rem;
+    color: #86312b; /* Assertive red-brown */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .expert-bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b3c35; /* Authentic brown */
+    margin: 0;
+  }
+  
+  .section-footer {
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background-color: #86312b; /* Assertive red-brown */
+    color: white;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.4s ease;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #9e3430; /* Authentic red */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(158, 52, 48, 0.3);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .team-experts-section {
+      padding: 80px 0;
+    }
+    
+    .experts-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .section-heading {
+      font-size: 2.5rem;
+    }
+    
+    .section-description {
+      font-size: 1.2rem;
+    }
+    
+    .section-header {
+      margin-bottom: 60px;
+    }
+    
+    .expert-content {
+      padding: 2rem;
+    }
+    
+    .expert-image, .expert-placeholder {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-heading {
+      font-size: 2rem;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+    }
+    
+    .expert-name {
+      font-size: 1.5rem;
+    }
+    
+    .expert-title {
+      font-size: 1rem;
+    }
+    
+    .expert-bio {
+      font-size: 0.95rem;
+    }
+    
+    .expert-content {
+      padding: 1.5rem;
+    }
+    
+    .expert-image, .expert-placeholder {
+      height: 200px;
+    }
+    
+    .expert-icon {
+      font-size: 4rem;
+    }
+    
+    .btn-primary {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Team Experts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "The Brilliant Minds Behind BeWild's Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Transforming agriculture with expertise, care, and a commitment to nature."
+    },
+    {
+      "type": "header",
+      "content": "Expert 1 - Dr. Shekhar Kolipaka"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_1_image",
+      "label": "Expert 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "expert_1_name",
+      "label": "Expert 1 Name",
+      "default": "Dr. Shekhar Kolipaka"
+    },
+    {
+      "type": "text",
+      "id": "expert_1_title",
+      "label": "Expert 1 Title",
+      "default": "Holistic Landscape Restoration Expert & Biosocial Conservationist"
+    },
+    {
+      "type": "textarea",
+      "id": "expert_1_bio",
+      "label": "Expert 1 Bio",
+      "default": "Leading landscape restoration at Beforest, he weaves biodiversity enhancement & sustainable farming, fostering human-animal harmony while championing regenerative ecosystems."
+    },
+    {
+      "type": "header",
+      "content": "Expert 2 - Geetu Mohnani"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_2_image",
+      "label": "Expert 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "expert_2_name",
+      "label": "Expert 2 Name",
+      "default": "Geetu Mohnani"
+    },
+    {
+      "type": "text",
+      "id": "expert_2_title",
+      "label": "Expert 2 Title",
+      "default": "Coffee Specialist & Consultant, Specialty Coffee Trainer"
+    },
+    {
+      "type": "textarea",
+      "id": "expert_2_bio",
+      "label": "Expert 2 Bio",
+      "default": "Founder of All 'Bout Coffee and an India Barista Champion, Geetu brings expertise in brewing world-class specialty coffee, blending innovation, passion, and perfection in every cup."
+    },
+    {
+      "type": "header",
+      "content": "Expert 3 - Marc Tormo"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_3_image",
+      "label": "Expert 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "expert_3_name",
+      "label": "Expert 3 Name",
+      "default": "Marc Tormo"
+    },
+    {
+      "type": "text",
+      "id": "expert_3_title",
+      "label": "Expert 3 Title",
+      "default": "Coffee Fermentation & Post-Harvesting Techniques Expert"
+    },
+    {
+      "type": "textarea",
+      "id": "expert_3_bio",
+      "label": "Expert 3 Bio",
+      "default": "With over 20 years of experience, Marc has elevated Indian specialty coffees worldwide through unique processing & fermentation techniques, bringing out rich, flavorful brews."
+    },
+    {
+      "type": "header",
+      "content": "CTA Settings"
+    },
+    {
+      "type": "text",
+      "id": "about_text",
+      "label": "About Button Text",
+      "default": "Learn More About Our Story"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Experts"
+    }
+  ]
+}
+{% endschema %} 

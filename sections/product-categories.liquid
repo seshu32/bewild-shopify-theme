@@ -1,0 +1,321 @@
+{% comment %}
+  BeWild Product Categories Section
+  Section 3 from BeWild Website Copy - "Handpicked, Pure & Organic"
+{% endcomment %}
+
+<div class="product-categories-section" id="products-{{ section.id }}">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-heading">
+        {{ section.settings.section_heading | default: "Handpicked, Pure & Organic" }}
+      </h2>
+    </div>
+    
+    <div class="categories-grid">
+      <!-- Coffee & Tea Category -->
+      <div class="category-card">
+        <div class="category-icon">☕</div>
+        <h3 class="category-title">Single Origin Specialty Coffee & Tea</h3>
+        <ul class="product-list">
+          <li>Medium Roast Canephora Coffee (Frozen Cherry | Robusta)</li>
+          <li>Medium Roast Canephora Coffee (Anoxic Fermentation | Robusta)</li>
+          <li>Dark Roast Canephora Coffee (Naturals | Robusta)</li>
+          <li>Medium Roast Canephora Coffee (Naturals | Robusta)</li>
+          <li>Rosella Herbal Tea (Single-Origin | Farm-to-Cup)</li>
+        </ul>
+        <a href="{{ section.settings.coffee_link | default: '/collections/coffee-tea' }}" class="category-cta">
+          Shop Coffee & Tea
+        </a>
+      </div>
+      
+      <!-- Grains Category -->
+      <div class="category-card">
+        <div class="category-icon">🌾</div>
+        <h3 class="category-title">Native Grains, Cereals and Pulses</h3>
+        <ul class="product-list">
+          <li>Navara Red Rice (Balanced blood sugar levels)</li>
+          <li>Mysore Mallige Rice (Energy-rich indigenous rice)</li>
+          <li>Illuppai Poo Samba (Improves respiratory function)</li>
+          <li>Jowar Flour (Heart-healthy grain)</li>
+          <li>Ragi Flour (Gluten-free & rich in calcium)</li>
+          <li>Whole Brown Horsegram (High protein and fiber)</li>
+        </ul>
+        <a href="{{ section.settings.grains_link | default: '/collections/grains' }}" class="category-cta">
+          Shop Grains & Pulses
+        </a>
+      </div>
+      
+      <!-- Spices Category -->
+      <div class="category-card">
+        <div class="category-icon">🌶️</div>
+        <h3 class="category-title">Whole(some) Spices</h3>
+        <ul class="product-list">
+          <li>Whole Black Pepper (Detoxifying and digestive aid)</li>
+          <li>Green Cardamom (Eases digestion)</li>
+          <li>Wild Mustard Whole (Good for skin & hair)</li>
+          <li>Turmeric (Anti-inflammatory properties)</li>
+        </ul>
+        <a href="{{ section.settings.spices_link | default: '/collections/spices' }}" class="category-cta">
+          Shop Spices
+        </a>
+      </div>
+      
+      <!-- Condiments Category -->
+      <div class="category-card">
+        <div class="category-icon">🍯</div>
+        <h3 class="category-title">Age-old Condiments</h3>
+        <ul class="product-list">
+          <li>Rosella Jam (Antioxidant-rich, made from rosella flowers)</li>
+          <li>Multifloral Raw Honey (Immunity booster)</li>
+        </ul>
+        <a href="{{ section.settings.condiments_link | default: '/collections/condiments' }}" class="category-cta">
+          Shop Condiments
+        </a>
+      </div>
+      
+      <!-- Cooking Oils Category -->
+      <div class="category-card">
+        <div class="category-icon">🫒</div>
+        <h3 class="category-title">Cooking Oils</h3>
+        <ul class="product-list">
+          <li>Groundnut Oil (Groundnut Oil as nature intended - simple, clean, nourishing)</li>
+        </ul>
+        <a href="{{ section.settings.oils_link | default: '/collections/oils' }}" class="category-cta">
+          Shop Cooking Oils
+        </a>
+      </div>
+    </div>
+    
+    <div class="section-footer">
+      <a href="{{ section.settings.all_products_link | default: '/collections/all' }}" class="btn btn-primary-large">
+        {{ section.settings.all_products_text | default: "View All Products" }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-categories-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #b0ddf1 0%, #ffcf83 100%); /* Approachable colors gradient */
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  
+  .section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .category-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 40px rgba(52, 46, 41, 0.15);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(52, 46, 41, 0.25);
+    border-color: #b8dc99; /* Approachable green */
+  }
+  
+  .category-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #86312b; /* Assertive red-brown */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+  
+  .product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+  }
+  
+  .product-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #4b3c35; /* Authentic brown */
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .product-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .product-list li:before {
+    content: "🌿";
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .category-cta {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    background-color: #344736; /* Assertive green */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .category-cta:hover {
+    background-color: #415c43; /* Authentic green */
+    transform: translateY(-2px);
+  }
+  
+  .section-footer {
+    text-align: center;
+  }
+  
+  .btn-primary-large {
+    background-color: #86312b; /* Assertive red-brown */
+    color: white;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.4s ease;
+  }
+  
+  .btn-primary-large:hover {
+    background-color: #9e3430; /* Authentic red */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(158, 52, 48, 0.3);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .product-categories-section {
+      padding: 80px 0;
+    }
+    
+    .categories-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .section-heading {
+      font-size: 2.5rem;
+    }
+    
+    .section-header {
+      margin-bottom: 60px;
+    }
+    
+    .category-card {
+      padding: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-heading {
+      font-size: 2rem;
+    }
+    
+    .category-title {
+      font-size: 1.3rem;
+    }
+    
+    .category-card {
+      padding: 1.5rem;
+    }
+    
+    .btn-primary-large {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Handpicked, Pure & Organic"
+    },
+    {
+      "type": "url",
+      "id": "coffee_link",
+      "label": "Coffee & Tea Collection Link"
+    },
+    {
+      "type": "url",
+      "id": "grains_link",
+      "label": "Grains & Pulses Collection Link"
+    },
+    {
+      "type": "url",
+      "id": "spices_link",
+      "label": "Spices Collection Link"
+    },
+    {
+      "type": "url",
+      "id": "condiments_link",
+      "label": "Condiments Collection Link"
+    },
+    {
+      "type": "url",
+      "id": "oils_link",
+      "label": "Cooking Oils Collection Link"
+    },
+    {
+      "type": "text",
+      "id": "all_products_text",
+      "label": "All Products Button Text",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "all_products_link",
+      "label": "All Products Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Categories"
+    }
+  ]
+}
+{% endschema %} 

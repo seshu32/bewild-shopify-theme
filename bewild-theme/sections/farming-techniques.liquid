@@ -1,0 +1,341 @@
+{% comment %}
+  BeWild Farming Techniques Section
+  Section 4 from BeWild Website Copy - "Our Farming Techniques"
+{% endcomment %}
+
+<div class="farming-techniques-section" id="farming-{{ section.id }}">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-heading">
+        {{ section.settings.section_heading | default: "Our Farming Techniques" }}
+      </h2>
+      <h3 class="section-subheading">
+        {{ section.settings.section_subheading | default: "Nature's Best, Grown with Care" }}
+      </h3>
+      <p class="section-description">
+        {{ section.settings.section_description | default: "At BeWild, our farming methods focus on sustainability, soil health, and biodiversity. Every technique we use is designed to give back to nature while ensuring the highest quality produce." }}
+      </p>
+    </div>
+    
+    <div class="techniques-grid">
+      <!-- Regenerative Agriculture -->
+      <div class="technique-card">
+        <div class="technique-icon">🌾</div>
+        <h4 class="technique-title">Regenerative Agriculture</h4>
+        <p class="technique-description">
+          Naturally enriching soil with crop rotation and cover crops.
+        </p>
+      </div>
+      
+      <!-- Agroforestry & Biodiversity -->
+      <div class="technique-card">
+        <div class="technique-icon">🌿</div>
+        <h4 class="technique-title">Agroforestry & Biodiversity</h4>
+        <p class="technique-description">
+          Integrating forests and companion planting for a pesticide-free balance.
+        </p>
+      </div>
+      
+      <!-- Water Conservation -->
+      <div class="technique-card">
+        <div class="technique-icon">💧</div>
+        <h4 class="technique-title">Water Conservation & Organic Mulching</h4>
+        <p class="technique-description">
+          Optimizing irrigation and moisture retention for sustainable farming.
+        </p>
+      </div>
+      
+      <!-- Natural Pest Management -->
+      <div class="technique-card">
+        <div class="technique-icon">🦋</div>
+        <h4 class="technique-title">Natural Pest Management</h4>
+        <p class="technique-description">
+          Using beneficial insects and herbal extracts as eco-friendly pest control.
+        </p>
+      </div>
+      
+      <!-- Farm-to-Table Transparency -->
+      <div class="technique-card">
+        <div class="technique-icon">🏡</div>
+        <h4 class="technique-title">Farm-to-Table Transparency</h4>
+        <p class="technique-description">
+          Ensuring a short, sustainable supply chain with full traceability.
+        </p>
+      </div>
+    </div>
+    
+    <div class="section-footer">
+      <a href="{{ section.settings.learn_more_link | default: '/pages/sustainability' }}" class="btn btn-outline">
+        {{ section.settings.learn_more_text | default: "Learn More About Our Methods" }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .farming-techniques-section {
+    padding: 100px 0;
+    background-color: white;
+    position: relative;
+  }
+  
+  .farming-techniques-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(184, 220, 153, 0.05) 0%, rgba(255, 207, 131, 0.05) 100%);
+    z-index: 1;
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .section-subheading {
+    font-size: 1.8rem;
+    color: #86312b; /* Assertive red-brown */
+    font-weight: 600;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  
+  .section-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #4b3c35; /* Authentic brown */
+  }
+  
+  .techniques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .technique-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(52, 46, 41, 0.1);
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid #f8f6f4;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .technique-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #344736, #86312b, #ffcf83);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+  
+  .technique-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .technique-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(52, 46, 41, 0.2);
+    border-color: #b8dc99; /* Approachable green */
+  }
+  
+  .technique-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  
+  .technique-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .technique-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4b3c35; /* Authentic brown */
+    margin: 0;
+  }
+  
+  .section-footer {
+    text-align: center;
+  }
+  
+  .btn-outline {
+    background-color: transparent;
+    color: #344736; /* Assertive green */
+    border: 2px solid #344736;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.4s ease;
+  }
+  
+  .btn-outline:hover {
+    background-color: #344736;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 71, 54, 0.3);
+  }
+  
+  /* Animation for technique cards */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .technique-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s both; }
+  .technique-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.2s both; }
+  .technique-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.3s both; }
+  .technique-card:nth-child(4) { animation: fadeInUp 0.6s ease 0.4s both; }
+  .technique-card:nth-child(5) { animation: fadeInUp 0.6s ease 0.5s both; }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .farming-techniques-section {
+      padding: 80px 0;
+    }
+    
+    .techniques-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .section-heading {
+      font-size: 2.5rem;
+    }
+    
+    .section-subheading {
+      font-size: 1.5rem;
+    }
+    
+    .section-description {
+      font-size: 1.2rem;
+    }
+    
+    .section-header {
+      margin-bottom: 60px;
+    }
+    
+    .technique-card {
+      padding: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-heading {
+      font-size: 2rem;
+    }
+    
+    .section-subheading {
+      font-size: 1.3rem;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+    }
+    
+    .technique-icon {
+      font-size: 3rem;
+    }
+    
+    .technique-title {
+      font-size: 1.2rem;
+    }
+    
+    .technique-card {
+      padding: 1.5rem;
+    }
+    
+    .btn-outline {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Farming Techniques",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Our Farming Techniques"
+    },
+    {
+      "type": "text",
+      "id": "section_subheading",
+      "label": "Section Subheading",
+      "default": "Nature's Best, Grown with Care"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "At BeWild, our farming methods focus on sustainability, soil health, and biodiversity. Every technique we use is designed to give back to nature while ensuring the highest quality produce."
+    },
+    {
+      "type": "text",
+      "id": "learn_more_text",
+      "label": "Learn More Button Text",
+      "default": "Learn More About Our Methods"
+    },
+    {
+      "type": "url",
+      "id": "learn_more_link",
+      "label": "Learn More Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Farming Techniques"
+    }
+  ]
+}
+{% endschema %} 

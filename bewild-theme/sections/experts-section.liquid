@@ -1,0 +1,163 @@
+{% comment %}
+  BeWild Experts Section - "The Brilliant Minds Behind BeWild's Mission"
+{% endcomment %}
+
+<div class="experts-section" id="experts-{{ section.id }}">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-heading">The Brilliant Minds Behind BeWild's Mission</h2>
+      <p class="section-description">Transforming agriculture with expertise, care, and a commitment to nature.</p>
+    </div>
+    
+    <div class="experts-grid">
+      <div class="expert-card">
+        <div class="expert-placeholder">
+          <div class="expert-icon">🌿</div>
+        </div>
+        <div class="expert-content">
+          <h3 class="expert-name">Dr. Shekhar Kolipaka</h3>
+          <p class="expert-title">Holistic Landscape Restoration Expert & Biosocial Conservationist</p>
+          <p class="expert-bio">Leading landscape restoration at Beforest, he weaves biodiversity enhancement & sustainable farming, fostering human-animal harmony while championing regenerative ecosystems.</p>
+        </div>
+      </div>
+      
+      <div class="expert-card">
+        <div class="expert-placeholder">
+          <div class="expert-icon">☕</div>
+        </div>
+        <div class="expert-content">
+          <h3 class="expert-name">Geetu Mohnani</h3>
+          <p class="expert-title">Coffee Specialist & Consultant, Specialty Coffee Trainer</p>
+          <p class="expert-bio">Founder of All 'Bout Coffee and an India Barista Champion, Geetu brings expertise in brewing world-class specialty coffee, blending innovation, passion, and perfection in every cup.</p>
+        </div>
+      </div>
+      
+      <div class="expert-card">
+        <div class="expert-placeholder">
+          <div class="expert-icon">🌍</div>
+        </div>
+        <div class="expert-content">
+          <h3 class="expert-name">Marc Tormo</h3>
+          <p class="expert-title">Coffee Fermentation & Post-Harvesting Techniques Expert</p>
+          <p class="expert-bio">With over 20 years of experience, Marc has elevated Indian specialty coffees worldwide through unique processing & fermentation techniques, bringing out rich, flavorful brews.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .experts-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #b8dc99 0%, #b0ddf1 50%, #ffcf83 100%);
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  
+  .section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #342e29;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-description {
+    font-size: 1.4rem;
+    color: #86312b;
+    font-weight: 500;
+  }
+  
+  .experts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 50px;
+  }
+  
+  .expert-card {
+    background: white;
+    border-radius: 25px;
+    padding: 0;
+    box-shadow: 0 20px 50px rgba(52, 46, 41, 0.15);
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+  
+  .expert-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 30px 70px rgba(52, 46, 41, 0.25);
+  }
+  
+  .expert-placeholder {
+    height: 250px;
+    background: linear-gradient(135deg, #f8f6f4, #ffcf83);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .expert-icon {
+    font-size: 6rem;
+    opacity: 0.6;
+  }
+  
+  .expert-content {
+    padding: 2.5rem;
+  }
+  
+  .expert-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #342e29;
+    margin-bottom: 0.5rem;
+  }
+  
+  .expert-title {
+    font-size: 1.1rem;
+    color: #86312b;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .expert-bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b3c35;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .experts-section {
+      padding: 80px 0;
+    }
+    
+    .experts-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .section-heading {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Experts Section",
+  "presets": [
+    {
+      "name": "Experts Section"
+    }
+  ]
+}
+{% endschema %} 

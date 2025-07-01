@@ -1,0 +1,42 @@
+<div class="container section-padding">
+  <div class="product-single">
+    <div class="product-media">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}">
+      {% endif %}
+    </div>
+    
+    <div class="product-details">
+      <h1 class="product-title">{{ product.title }}</h1>
+      
+      <div class="product-price">
+        <span class="price">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}
+          <span class="compare-price">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+      
+      {% if product.description %}
+        <div class="product-description">
+          {{ product.description }}
+        </div>
+      {% endif %}
+      
+      <form action="/cart/add" method="post" enctype="multipart/form-data">
+        <select name="id" class="product-variants">
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <option value="{{ variant.id }}">
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        
+        <button type="submit" class="btn btn-primary add-to-cart">
+          Add to Cart
+        </button>
+      </form>
+    </div>
+  </div>
+</div> 
