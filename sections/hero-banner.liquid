@@ -1,187 +1,513 @@
 {% comment %}
   BeWild Hero Banner Section
-  Replicating the Oars template structure with BeWild brand identity
+  Replicating the exact Oars template hero design with BeWild brand identity
 {% endcomment %}
 
 <div class="hero-banner" id="hero-{{ section.id }}">
-  <div class="hero-content">
-    <div class="container">
-      <div class="hero-text">
-        <h1 class="hero-heading">
-          {{ section.settings.hero_heading | default: "Bringing Nature to Your Table" }}
-        </h1>
+  <!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <div class="floating-bar bar-1"></div>
+    <div class="floating-bar bar-2"></div>
+    <div class="floating-bar bar-3"></div>
+    <div class="floating-bar bar-4"></div>
+    <div class="floating-bar bar-5"></div>
+    <div class="floating-bar bar-6"></div>
+    <div class="floating-bar bar-7"></div>
+    <div class="floating-bar bar-8"></div>
+  </div>
+  
+  <!-- Floating Organic Elements -->
+  <div class="organic-elements">
+    <div class="floating-element element-1">🥑</div>
+    <div class="floating-element element-2">🥝</div>
+    <div class="floating-element element-3">🍋</div>
+    <div class="floating-element element-4">🌿</div>
+    <div class="floating-element element-5">🫐</div>
+    <div class="floating-element element-6">🥬</div>
+    <div class="floating-element element-7">🌱</div>
+  </div>
+  
+  <div class="container">
+    <div class="hero-content">
+      
+      <!-- Hero Image/Product -->
+      <div class="hero-image-section">
+        {% if section.settings.hero_image %}
+          <div class="hero-product-image">
+            <img src="{{ section.settings.hero_image | img_url: '600x600' }}" 
+                 alt="{{ section.settings.hero_image.alt | default: 'BeWild Organic Smoothie' }}"
+                 loading="lazy">
+          </div>
+        {% else %}
+          <div class="hero-product-placeholder">
+            <div class="smoothie-glass">
+              <div class="smoothie-liquid"></div>
+              <div class="smoothie-foam"></div>
+              <div class="glass-highlight"></div>
+            </div>
+          </div>
+        {% endif %}
         
-        <div class="hero-tagline">
-          <span class="tagline-organic">Organic</span>
-          <span class="tagline-separator">|</span>
-          <span class="tagline-sustainable">Sustainable</span>
-          <span class="tagline-separator">|</span>
-          <span class="tagline-fresh">Farm-Fresh</span>
+        <!-- Product Tag -->
+        <div class="product-tag">
+          <div class="product-info">
+            <span class="product-name">{{ section.settings.product_name | default: "Organic Green Smoothie" }}</span>
+            <span class="product-price">${{ section.settings.product_price | default: "12.99" }}</span>
+          </div>
+          <button class="close-tag">×</button>
+        </div>
+      </div>
+      
+      <!-- Hero Text Content -->
+      <div class="hero-text-section">
+        <div class="hero-intro">
+          {{ section.settings.hero_intro | default: "We introduce" }}
         </div>
         
-        <p class="hero-subtext">
-          {{ section.settings.hero_subtext | default: "Discover the goodness of nature with our responsibly sourced, eco-friendly, and chemical-free products. From single-origin coffee to wholesome grains and spices, we bring you farm-fresh produce straight to your doorstep." }}
+        <h1 class="hero-main-title">
+          {{ section.settings.hero_title | default: "BeWild Organic" }}
+        </h1>
+        
+        <p class="hero-description">
+          {{ section.settings.hero_description | default: "Discover the pure essence of nature with our carefully curated collection of organic products. From farm-fresh smoothies to heritage grains, we bring you the finest sustainable nutrition." }}
         </p>
         
         <div class="hero-cta">
-          <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn btn-primary">
-            {{ section.settings.cta_text | default: "Shop Now" }}
+          <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="shop-now-btn">
+            {{ section.settings.cta_text | default: "SHOP NOW" }}
           </a>
         </div>
       </div>
       
-      {% if section.settings.hero_image %}
-        <div class="hero-image">
-          <img src="{{ section.settings.hero_image | img_url: '1200x800' }}" 
-               alt="{{ section.settings.hero_image.alt | default: 'BeWild Organic Products' }}"
-               loading="lazy">
-        </div>
-      {% endif %}
     </div>
   </div>
 </div>
 
 <style>
   .hero-banner {
-    background: linear-gradient(135deg, #ffcf83 0%, #b8dc99 100%); /* Approachable colors gradient */
-    min-height: 70vh;
+    background: linear-gradient(135deg, #b8dc99 0%, #a8cc89 50%, #98bc79 100%);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
   }
   
-  .hero-banner::before {
-    content: '';
+  /* Floating Background Bars */
+  .floating-elements {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(52, 46, 41, 0.1); /* Subtle assertive overlay */
+    width: 100%;
+    height: 100%;
     z-index: 1;
   }
   
-  .hero-content {
-    position: relative;
-    z-index: 2;
+  .floating-bar {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    animation: floatAnimation 6s ease-in-out infinite;
+  }
+  
+  .bar-1 {
+    width: 120px;
+    height: 8px;
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  
+  .bar-2 {
+    width: 80px;
+    height: 8px;
+    top: 25%;
+    left: 35%;
+    animation-delay: 1s;
+  }
+  
+  .bar-3 {
+    width: 160px;
+    height: 8px;
+    top: 35%;
+    left: 45%;
+    animation-delay: 2s;
+  }
+  
+  .bar-4 {
+    width: 100px;
+    height: 8px;
+    top: 45%;
+    left: 25%;
+    animation-delay: 3s;
+  }
+  
+  .bar-5 {
+    width: 140px;
+    height: 8px;
+    top: 55%;
+    left: 40%;
+    animation-delay: 4s;
+  }
+  
+  .bar-6 {
+    width: 90px;
+    height: 8px;
+    top: 65%;
+    left: 30%;
+    animation-delay: 5s;
+  }
+  
+  .bar-7 {
+    width: 110px;
+    height: 8px;
+    top: 75%;
+    left: 50%;
+    animation-delay: 2.5s;
+  }
+  
+  .bar-8 {
+    width: 70px;
+    height: 8px;
+    top: 85%;
+    left: 35%;
+    animation-delay: 1.5s;
+  }
+  
+  /* Floating Organic Elements */
+  .organic-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  .floating-element {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: organicFloat 8s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+  
+  .element-1 { /* Avocado */
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  .element-2 { /* Kiwi */
+    top: 70%;
+    right: 20%;
+    animation-delay: 2s;
+  }
+  
+  .element-3 { /* Lime */
+    top: 15%;
+    right: 15%;
+    animation-delay: 4s;
+  }
+  
+  .element-4 { /* Leaves */
+    top: 60%;
+    left: 8%;
+    animation-delay: 1s;
+  }
+  
+  .element-5 { /* Blueberries */
+    top: 80%;
+    right: 35%;
+    animation-delay: 3s;
+  }
+  
+  .element-6 { /* Lettuce */
+    top: 40%;
+    left: 5%;
+    animation-delay: 5s;
+  }
+  
+  .element-7 { /* Sprout */
+    top: 30%;
+    right: 10%;
+    animation-delay: 6s;
   }
   
   .container {
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 4rem;
     align-items: center;
+    min-height: 80vh;
   }
   
-  .hero-heading {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #342e29; /* Assertive dark brown */
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    font-family: system-ui, -apple-system, sans-serif;
+  /* Hero Image Section */
+  .hero-image-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .hero-tagline {
+  .hero-product-image img {
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  }
+  
+  .hero-product-placeholder {
+    position: relative;
+    width: 400px;
+    height: 500px;
+  }
+  
+  .smoothie-glass {
+    width: 300px;
+    height: 450px;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.3) 0%, 
+      rgba(255, 255, 255, 0.1) 100%);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 15px 15px 25px 25px;
+    position: relative;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+  }
+  
+  .smoothie-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75%;
+    background: linear-gradient(180deg, 
+      #7eb069 0%, 
+      #5a8f4a 100%);
+    border-radius: 12px 12px 22px 22px;
+  }
+  
+  .smoothie-foam {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    right: 5%;
+    height: 10%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    filter: blur(2px);
+  }
+  
+  .glass-highlight {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 60%;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.3) 0%, 
+      transparent 50%);
+    border-radius: 10px;
+  }
+  
+  /* Product Tag */
+  .product-tag {
+    position: absolute;
+    top: 20%;
+    right: -50px;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
-    font-weight: 500;
-    font-size: 1.2rem;
+    min-width: 200px;
   }
   
-  .tagline-organic {
-    color: #344736; /* Assertive green */
+  .product-info {
+    display: flex;
+    flex-direction: column;
   }
   
-  .tagline-sustainable {
-    color: #86312b; /* Assertive red-brown */
+  .product-name {
+    font-weight: 600;
+    color: #344736;
+    font-size: 0.9rem;
   }
   
-  .tagline-fresh {
-    color: #002140; /* Assertive navy */
-  }
-  
-  .tagline-separator {
-    color: #4b3c35; /* Authentic brown */
-  }
-  
-  .hero-subtext {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #4b3c35; /* Authentic brown */
-    margin-bottom: 2.5rem;
-    max-width: 90%;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
+  .product-price {
+    color: #86312b;
+    font-weight: 700;
     font-size: 1.1rem;
-    transition: all 0.4s ease-in-out;
+  }
+  
+  .close-tag {
+    background: none;
     border: none;
+    font-size: 1.2rem;
+    color: #999;
     cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .btn-primary {
-    background-color: #86312b; /* Assertive red-brown */
+  /* Hero Text Section */
+  .hero-text-section {
+    padding-left: 2rem;
+  }
+  
+  .hero-intro {
+    font-size: 1.8rem;
+    color: rgba(52, 46, 41, 0.8);
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-family: Georgia, serif;
+  }
+  
+  .hero-main-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #344736;
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .hero-description {
+    font-size: 1.1rem;
+    color: #4b3c35;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 500px;
+  }
+  
+  .shop-now-btn {
+    background: #9eb680;
     color: white;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
   }
   
-  .btn-primary:hover {
-    background-color: #9e3430; /* Authentic red on hover */
+  .shop-now-btn:hover {
+    background: #8ea670;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(134, 49, 43, 0.3);
+    box-shadow: 0 8px 25px rgba(158, 182, 128, 0.4);
   }
   
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(52, 46, 41, 0.2);
+  /* Animations */
+  @keyframes floatAnimation {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  
+  @keyframes organicFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-15px) rotate(5deg); }
+    66% { transform: translateY(-10px) rotate(-3deg); }
   }
   
   /* Responsive Design */
+  @media (max-width: 1024px) {
+    .hero-content {
+      gap: 2rem;
+    }
+    
+    .hero-main-title {
+      font-size: 3.5rem;
+    }
+    
+    .product-tag {
+      right: -30px;
+    }
+  }
+  
   @media (max-width: 768px) {
-    .container {
+    .hero-content {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 3rem;
       text-align: center;
     }
     
-    .hero-heading {
-      font-size: 2.5rem;
+    .hero-image-section {
+      order: 2;
     }
     
-    .hero-subtext {
-      max-width: 100%;
+    .hero-text-section {
+      order: 1;
+      padding-left: 0;
     }
     
-    .hero-tagline {
+    .hero-main-title {
+      font-size: 3rem;
+    }
+    
+    .hero-intro {
+      font-size: 1.4rem;
+    }
+    
+    .product-tag {
+      position: static;
+      margin: 2rem auto 0;
       justify-content: center;
+    }
+    
+    .smoothie-glass {
+      width: 250px;
+      height: 375px;
+    }
+    
+    .floating-element {
+      font-size: 2rem;
     }
   }
   
   @media (max-width: 480px) {
-    .hero-heading {
-      font-size: 2rem;
+    .hero-main-title {
+      font-size: 2.5rem;
     }
     
-    .hero-subtext {
-      font-size: 1.1rem;
+    .hero-intro {
+      font-size: 1.2rem;
     }
     
-    .btn {
-      padding: 0.8rem 2rem;
+    .hero-description {
+      font-size: 1rem;
+    }
+    
+    .hero-banner {
+      min-height: 90vh;
+    }
+    
+    .smoothie-glass {
+      width: 200px;
+      height: 300px;
+    }
+    
+    .floating-element {
+      font-size: 1.5rem;
+    }
+    
+    .floating-bar {
+      display: none; /* Hide bars on very small screens */
     }
   }
 </style>
@@ -191,32 +517,60 @@
   "name": "Hero Banner",
   "settings": [
     {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
       "type": "text",
-      "id": "hero_heading",
-      "label": "Hero Heading",
-      "default": "Bringing Nature to Your Table"
+      "id": "hero_intro",
+      "label": "Hero Introduction Text",
+      "default": "We introduce"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Main Title",
+      "default": "BeWild Organic"
     },
     {
       "type": "textarea",
-      "id": "hero_subtext",
-      "label": "Hero Subtext",
-      "default": "Discover the goodness of nature with our responsibly sourced, eco-friendly, and chemical-free products. From single-origin coffee to wholesome grains and spices, we bring you farm-fresh produce straight to your doorstep."
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "Discover the pure essence of nature with our carefully curated collection of organic products. From farm-fresh smoothies to heritage grains, we bring you the finest sustainable nutrition."
     },
     {
       "type": "text",
       "id": "cta_text",
       "label": "CTA Button Text",
-      "default": "Shop Now"
+      "default": "SHOP NOW"
     },
     {
       "type": "url",
       "id": "cta_link",
-      "label": "CTA Button Link"
+      "label": "CTA Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Product Showcase"
     },
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero Image"
+      "label": "Hero Product Image",
+      "info": "Upload a product image or leave blank to show the default smoothie glass"
+    },
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product Tag Name",
+      "default": "Organic Green Smoothie"
+    },
+    {
+      "type": "text",
+      "id": "product_price",
+      "label": "Product Tag Price",
+      "default": "12.99"
     }
   ],
   "presets": [

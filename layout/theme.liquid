@@ -38,6 +38,8 @@
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
   
+  {% section 'header' %}
+  
   <main role="main" id="MainContent">
     {{ content_for_layout }}
   </main>

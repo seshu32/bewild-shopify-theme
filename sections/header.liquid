@@ -1,0 +1,510 @@
+{% comment %}
+  BeWild Header/Navigation Section
+  Replicating the exact navigation structure from Oars template
+{% endcomment %}
+
+<header class="site-header" id="header-{{ section.id }}">
+  <div class="container">
+    <div class="header-content">
+      
+      <!-- Logo -->
+      <div class="header-logo">
+        {% if section.settings.logo %}
+          <a href="/" class="logo-link">
+            <img src="{{ section.settings.logo | img_url: '200x80' }}" 
+                 alt="{{ shop.name }}" 
+                 class="logo-image">
+          </a>
+        {% else %}
+          <a href="/" class="logo-text">
+            {{ section.settings.logo_text | default: "BeWild" }}
+          </a>
+        {% endif %}
+      </div>
+      
+      <!-- Main Navigation -->
+      <nav class="main-navigation">
+        <ul class="nav-menu">
+          
+          <!-- Home Dropdown -->
+          <li class="nav-item has-dropdown">
+            <a href="/" class="nav-link">
+              {{ section.settings.home_text | default: "HOME" }}
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/" class="dropdown-link">BeWild Organic</a></li>
+              <li><a href="/collections/smoothies" class="dropdown-link">BeWild Smoothie</a></li>
+              <li><a href="/collections/fresh" class="dropdown-link">BeWild Fresh</a></li>
+              <li><a href="/collections/grains" class="dropdown-link">Heritage Grains</a></li>
+              <li><a href="/collections/spices" class="dropdown-link">Spice Collection</a></li>
+              <li><a href="/pages/showcase" class="dropdown-link">Product Showcase</a></li>
+            </ul>
+          </li>
+          
+          <!-- Shop Layout Dropdown -->
+          <li class="nav-item has-dropdown">
+            <a href="/collections" class="nav-link">
+              {{ section.settings.shop_text | default: "SHOP LAYOUT" }}
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Collection Styles</li>
+              <li><a href="/collections/all" class="dropdown-link">Shop Left Sidebar</a></li>
+              <li><a href="/collections/all" class="dropdown-link">Shop Right Sidebar</a></li>
+              <li><a href="/collections/all" class="dropdown-link">Shop No Sidebar</a></li>
+              <li><a href="/collections/all" class="dropdown-link">Shop List</a></li>
+              <li><a href="/collections/all" class="dropdown-link">Shop List Sidebar</a></li>
+              <li class="dropdown-header">Product Styles</li>
+              <li><a href="/products/coffee" class="dropdown-link">Advanced Product Type</a></li>
+              <li><a href="/products/coffee" class="dropdown-link">Product Sidebar Layout</a></li>
+              <li><a href="/products/coffee" class="dropdown-link">Product Box Layout</a></li>
+            </ul>
+          </li>
+          
+          <!-- All Collections Dropdown -->
+          <li class="nav-item has-dropdown">
+            <a href="/collections" class="nav-link">
+              {{ section.settings.collections_text | default: "ALL COLLECTIONS" }}
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/collections/coffee" class="dropdown-link">Coffee & Tea</a></li>
+              <li><a href="/collections/grains" class="dropdown-link">Heritage Grains</a></li>
+              <li><a href="/collections/spices" class="dropdown-link">Spice Collection</a></li>
+              <li><a href="/collections/oils" class="dropdown-link">Cooking Oils</a></li>
+              <li><a href="/collections/condiments" class="dropdown-link">Condiments</a></li>
+              <li><a href="/collections/all" class="dropdown-link">View All Products</a></li>
+            </ul>
+          </li>
+          
+          <!-- Pages Dropdown -->
+          <li class="nav-item has-dropdown">
+            <a href="/pages" class="nav-link">
+              {{ section.settings.pages_text | default: "PAGES" }}
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/pages/about-us" class="dropdown-link">About Us</a></li>
+              <li><a href="/pages/contact" class="dropdown-link">Contact Us</a></li>
+              <li><a href="/pages/sustainability" class="dropdown-link">Sustainability</a></li>
+              <li><a href="/pages/farming-practices" class="dropdown-link">Farming Practices</a></li>
+              <li><a href="/pages/faq" class="dropdown-link">FAQs</a></li>
+              <li><a href="/account" class="dropdown-link">My Account</a></li>
+            </ul>
+          </li>
+          
+          <!-- Blogs Dropdown -->
+          <li class="nav-item has-dropdown">
+            <a href="/blogs" class="nav-link">
+              {{ section.settings.blogs_text | default: "BLOGS" }}
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/blogs/news" class="dropdown-link">Latest News</a></li>
+              <li><a href="/blogs/farming" class="dropdown-link">Farming Tips</a></li>
+              <li><a href="/blogs/recipes" class="dropdown-link">Organic Recipes</a></li>
+              <li><a href="/blogs/sustainability" class="dropdown-link">Sustainability</a></li>
+              <li><a href="/blogs/coffee" class="dropdown-link">Coffee Culture</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav>
+      
+      <!-- Header Actions -->
+      <div class="header-actions">
+        
+        <!-- Search -->
+        <div class="header-search">
+          <button class="search-toggle" aria-label="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"></circle>
+              <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Cart -->
+        <div class="header-cart">
+          <a href="/cart" class="cart-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" stroke="currentColor" stroke-width="2"></path>
+              <path d="M20 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" stroke="currentColor" stroke-width="2"></path>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor" stroke-width="2"></path>
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Search Overlay -->
+  <div class="search-overlay">
+    <div class="search-container">
+      <form action="/search" method="get" class="search-form">
+        <input type="text" name="q" placeholder="Search products..." class="search-input">
+        <button type="submit" class="search-submit">Search</button>
+      </form>
+      <button class="search-close">&times;</button>
+    </div>
+  </div>
+  
+</header>
+
+<style>
+  .site-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+  
+  /* Logo */
+  .header-logo {
+    flex-shrink: 0;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #344736; /* BeWild green */
+    text-decoration: none;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .logo-image {
+    max-height: 50px;
+    width: auto;
+  }
+  
+  /* Navigation */
+  .main-navigation {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+  
+  .nav-item {
+    position: relative;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #342e29;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 1rem 0;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+  
+  .nav-link:hover {
+    color: #344736; /* BeWild green */
+  }
+  
+  .dropdown-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    min-width: 250px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 1rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    border: 1px solid #f0f0f0;
+  }
+  
+  .has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px);
+  }
+  
+  .dropdown-header {
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    color: #86312b; /* BeWild red-brown */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dropdown-link {
+    display: block;
+    padding: 0.7rem 1.5rem;
+    color: #4b3c35;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-link:hover {
+    background: #f8f6f4;
+    color: #344736;
+    transform: translateX(5px);
+  }
+  
+  /* Header Actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .search-toggle,
+  .cart-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    color: #342e29;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+  
+  .search-toggle:hover,
+  .cart-link:hover {
+    background: #f8f6f4;
+    color: #344736;
+  }
+  
+  .cart-link {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #86312b;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  
+  .hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: #342e29;
+    transition: all 0.3s ease;
+  }
+  
+  /* Search Overlay */
+  .search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    min-width: 400px;
+  }
+  
+  .search-form {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .search-submit {
+    background: #344736;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .search-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #999;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .main-navigation {
+      display: none;
+    }
+    
+    .mobile-menu-toggle {
+      display: flex;
+    }
+    
+    .header-content {
+      height: 70px;
+    }
+    
+    .search-container {
+      min-width: 90%;
+      padding: 2rem;
+    }
+    
+    .search-form {
+      flex-direction: column;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "BeWild"
+    },
+    {
+      "type": "text",
+      "id": "home_text",
+      "label": "Home Menu Text",
+      "default": "HOME"
+    },
+    {
+      "type": "text",
+      "id": "shop_text",
+      "label": "Shop Menu Text",
+      "default": "SHOP LAYOUT"
+    },
+    {
+      "type": "text",
+      "id": "collections_text",
+      "label": "Collections Menu Text",
+      "default": "ALL COLLECTIONS"
+    },
+    {
+      "type": "text",
+      "id": "pages_text",
+      "label": "Pages Menu Text",
+      "default": "PAGES"
+    },
+    {
+      "type": "text",
+      "id": "blogs_text",
+      "label": "Blogs Menu Text",
+      "default": "BLOGS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %} 
