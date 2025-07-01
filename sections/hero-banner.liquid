@@ -1,648 +1,216 @@
-{{ 'component-slideshow.css' | asset_url | stylesheet_tag: media: 'all' }}
+{% comment %}
+  BeWild Hero Banner Section - Simple Version
+  Basic hero banner to test and resolve Liquid errors
+{% endcomment %}
 
-<div data-section-type="slideshow-section" class="slideshow-section-{{ section.id }} spaced-section spaced-section--full-width zoomIn animated" data-animate="zoomIn" data-delay="100" data-section-name="index-slideshow">
-  <div class="container-fluid">
-    <div class="slideshow-categories__content">
-      <slideshow-component>
-        <div class="slideshow-{{ section.id }} index-slideshow-container" 
-             data-section-id="{{ section.id }}" 
-             data-slideshow-param='{"effect": "slide", "autoplay": {% if section.settings.autoplay %}"{{ section.settings.autoplay_speed }}"{% else %}"false"{% endif %}, "height": "920", "width": "1920"}' 
-             data-index-slideshow="">
-          <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" 
-               data-slideshow-container="" 
-               style="height: 400.104px;">
-            <div class="swiper-wrapper" id="swiper-wrapper-{{ section.id }}" aria-live="polite">
-              
-              {% for block in section.blocks %}
-                <div class="swiper-slide{% if forloop.first %} swiper-slide-active{% endif %}" 
-                     data-slideshow-slide-type="image" 
-                     data-slideshow-slide="" 
-                     data-swiper-slide-index="{{ forloop.index0 }}" 
-                     role="group" 
-                     aria-label="{{ forloop.index }} / {{ section.blocks.size }}">
-                  
-                  <div class="index-slideshow-background">
-                    {% if block.settings.background_image %}
-                      <div class="index-slideshow__background lazyloaded" 
-                           style="height: 0px; padding-bottom: 47.9167%; background-image: url('{{ block.settings.background_image | image_url: width: 3024 }}');" 
-                           data-bgset="{{ block.settings.background_image | image_url: width: 180 }} 180w, {{ block.settings.background_image | image_url: width: 360 }} 360w, {{ block.settings.background_image | image_url: width: 540 }} 540w, {{ block.settings.background_image | image_url: width: 720 }} 720w, {{ block.settings.background_image | image_url: width: 900 }} 900w, {{ block.settings.background_image | image_url: width: 1080 }} 1080w, {{ block.settings.background_image | image_url: width: 1296 }} 1296w, {{ block.settings.background_image | image_url: width: 1512 }} 1512w, {{ block.settings.background_image | image_url: width: 1728 }} 1728w, {{ block.settings.background_image | image_url: width: 1944 }} 1944w, {{ block.settings.background_image | image_url: width: 2160 }} 2160w, {{ block.settings.background_image | image_url: width: 2376 }} 2376w, {{ block.settings.background_image | image_url: width: 2592 }} 2592w, {{ block.settings.background_image | image_url: width: 2808 }} 2808w, {{ block.settings.background_image | image_url: width: 3024 }} 3024w" 
-                           data-ratio="2.0869565217391304" 
-                           data-parent-fit="cover" 
-                           data-slideshow-bkg="">
-                      </div>
-                    {% else %}
-                      <div class="index-slideshow__background default-bg" 
-                           style="height: 0px; padding-bottom: 47.9167%; background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);">
-                      </div>
-                    {% endif %}
-                  </div>
-                  
-                  <div class="index-slideshow-caption-group index-slideshow-caption {{ block.settings.text_position | default: 'position-right-center' }} {{ block.settings.text_align | default: 'align-left' }}">
-                    <div class="animated {{ block.settings.entrance_effect | default: 'slideInRight' }}" 
-                         data-slideshow-caption='{"entranceEffect": "{{ block.settings.entrance_effect | default: 'slideInRight' }}", "exitEffect": "{{ block.settings.exit_effect | default: 'slideOutLeft' }}"}' 
-                         style="position: relative; animation-delay: 0ms;">
-                      
-                      {% if block.settings.subtitle != blank %}
-                        <div class="subtitle-{{ section.id }}-{{ block.id }} index-slideshow-caption-subtitle">
-                          {{ block.settings.subtitle }}
-                        </div>
-                        <style data-shopify="">
-                          .subtitle-{{ section.id }}-{{ block.id }}{
-                            color: {{ block.settings.subtitle_color | default: '#4b3c35' }};
-                          }
-                        </style>
-                      {% endif %}
-                      
-                      {% if block.settings.title != blank %}
-                        <div class="title-{{ section.id }}-{{ block.id }} index-slideshow-caption-title">
-                          {{ block.settings.title }}
-                        </div>
-                        <style data-shopify="">
-                          .title-{{ section.id }}-{{ block.id }}{
-                            color: {{ block.settings.title_color | default: '#344736' }};
-                          }
-                        </style>
-                      {% endif %}
-                      
-                      {% if block.settings.description != blank %}
-                        <div class="description-{{ section.id }}-{{ block.id }} index-slideshow-caption-description">
-                          {{ block.settings.description }}
-                        </div>
-                        <style data-shopify="">
-                          .description-{{ section.id }}-{{ block.id }}{
-                            color: {{ block.settings.description_color | default: '#342e29' }};
-                          }
-                        </style>
-                      {% endif %}
-                      
-                      {% if block.settings.button_text != blank and block.settings.button_url != blank %}
-                        <div class="index-slideshow-caption-action">
-                          <a href="{{ block.settings.button_url }}" 
-                             class="button action-{{ section.id }}-{{ block.id }} flex-container align-middle">
-                            {{ block.settings.button_text }}
-                          </a>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
-            
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+<div class="hero-banner-section" id="hero-{{ section.id }}">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-text">
+        {% if section.settings.subtitle != blank %}
+          <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+        
+        {% if section.settings.title != blank %}
+          <h1 class="hero-title">{{ section.settings.title }}</h1>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <p class="hero-description">{{ section.settings.description }}</p>
+        {% endif %}
+        
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+          <div class="hero-cta">
+            <a href="{{ section.settings.button_url }}" class="hero-button">
+              {{ section.settings.button_text }}
+            </a>
           </div>
-          
-          <div class="swiper-wrapper-loader"></div>
-          
-          <!-- Pagination -->
-          {% if section.settings.show_pagination %}
-            <div class="index-slideshow-pagination swiper-pagination-clickable index-slideshow-pagination-bullets" data-slideshow-pagination="">
-              {% for block in section.blocks %}
-                <span class="index-slideshow-pagination-bullet{% if forloop.first %} index-slideshow-pagination-bullet-active{% endif %}" 
-                      tabindex="0" 
-                      role="button" 
-                      aria-label="Go to slide {{ forloop.index }}"></span>
-              {% endfor %}
-            </div>
-          {% endif %}
-          
-          <!-- Navigation buttons -->
-          {% if section.settings.show_navigation %}
-            <div class="index-slideshow-navigation index-slideshow-nav-prev show-for-large" 
-                 data-slideshow-nav-prev="" 
-                 tabindex="0" 
-                 role="button" 
-                 aria-label="Previous slide" 
-                 aria-controls="swiper-wrapper-{{ section.id }}">
-              <svg class="svg-icon"><use xlink:href="#arrow-left"></use></svg>
-            </div>
-            <div class="index-slideshow-navigation index-slideshow-nav-next show-for-large" 
-                 data-slideshow-nav-next="" 
-                 tabindex="0" 
-                 role="button" 
-                 aria-label="Next slide" 
-                 aria-controls="swiper-wrapper-{{ section.id }}">
-              <svg class="svg-icon"><use xlink:href="#arrow-right"></use></svg>
-            </div>
-          {% endif %}
+        {% endif %}
+      </div>
+      
+      {% if section.settings.hero_image %}
+        <div class="hero-image">
+          <img src="{{ section.settings.hero_image | image_url: width: 800 }}" 
+               alt="{{ section.settings.hero_image.alt | default: 'BeWild Hero Image' }}"
+               loading="eager">
         </div>
-      </slideshow-component>      
+      {% endif %}
     </div>
   </div>
 </div>
 
 <style>
-  /* Slideshow Section */
-  .slideshow-section-{{ section.id }} {
+  .hero-banner-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);
   }
   
-  .slideshow-categories__content {
-    position: relative;
+  .hero-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
   
-  .index-slideshow-container {
-    position: relative;
-    height: 500px;
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 500px;
   }
   
-  .swiper-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  
-  .swiper-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    transition-property: transform;
-    box-sizing: content-box;
-  }
-  
-  .swiper-slide {
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition-property: transform;
-  }
-  
-  .index-slideshow-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-  
-  .index-slideshow__background {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  
-  .default-bg {
-    background: linear-gradient(135deg, #b8dc99 0%, #ffcf83 100%);
-  }
-  
-  .index-slideshow-caption-group {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 600px;
-    padding: 40px;
-  }
-  
-  .position-left-center {
-    left: 5%;
-  }
-  
-  .position-right-center {
-    right: 5%;
-  }
-  
-  .position-center-center {
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
-  
-  .align-left {
+  .hero-text {
     text-align: left;
   }
   
-  .align-center {
-    text-align: center;
-  }
-  
-  .align-right {
-    text-align: right;
-  }
-  
-  .index-slideshow-caption-subtitle {
+  .hero-subtitle {
     font-family: 'Dancing Script', cursive;
     font-size: 24px;
-    font-weight: 400;
+    color: #4b3c35;
     margin-bottom: 10px;
-    line-height: 1.2;
+    font-weight: 400;
   }
   
-  .index-slideshow-caption-title {
+  .hero-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 56px;
     font-weight: 700;
-    margin-bottom: 20px;
+    color: #344736;
     line-height: 1.1;
+    margin-bottom: 20px;
   }
   
-  .index-slideshow-caption-description {
+  .hero-description {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
     line-height: 1.6;
+    color: #342e29;
     margin-bottom: 30px;
     max-width: 500px;
   }
   
-  .index-slideshow-caption-action .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 35px;
+  .hero-button {
+    display: inline-block;
+    padding: 18px 35px;
     background-color: #86312b;
     color: white;
+    text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: all 0.3s ease;
     letter-spacing: 1px;
   }
   
-  .index-slideshow-caption-action .button:hover {
+  .hero-button:hover {
     background-color: #9e3430;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(134, 49, 43, 0.3);
-  }
-  
-  /* Pagination */
-  .index-slideshow-pagination {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .index-slideshow-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .index-slideshow-pagination-bullet-active {
-    background-color: #86312b;
-    transform: scale(1.2);
-  }
-  
-  /* Navigation */
-  .index-slideshow-navigation {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .index-slideshow-nav-prev {
-    left: 20px;
-  }
-  
-  .index-slideshow-nav-next {
-    right: 20px;
-  }
-  
-  .index-slideshow-navigation:hover {
-    background-color: #86312b;
+    box-shadow: 0 8px 25px rgba(134, 49, 43, 0.3);
     color: white;
+    text-decoration: none;
   }
   
-  .svg-icon {
-    width: 20px;
-    height: 20px;
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
   
-  /* Animation effects */
-  .animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-  }
-  
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translate3d(-100%, 0, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-  }
-  
-  @keyframes slideInRight {
-    from { opacity: 0; transform: translate3d(100%, 0, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-  }
-  
-  @keyframes slideOutLeft {
-    from { opacity: 1; }
-    to { opacity: 0; transform: translate3d(-100%, 0, 0); }
-  }
-  
-  @keyframes slideOutRight {
-    from { opacity: 1; }
-    to { opacity: 0; transform: translate3d(100%, 0, 0); }
-  }
-  
-  @keyframes zoomIn {
-    from { opacity: 0; transform: scale3d(0.3, 0.3, 0.3); }
-    50% { opacity: 1; }
-  }
-  
-  .slideInLeft { animation-name: slideInLeft; }
-  .slideInRight { animation-name: slideInRight; }
-  .slideOutLeft { animation-name: slideOutLeft; }
-  .slideOutRight { animation-name: slideOutRight; }
-  .zoomIn { animation-name: zoomIn; }
-  
-  /* Responsive */
+  /* Responsive Design */
   @media (max-width: 768px) {
-    .index-slideshow-caption-title {
+    .hero-banner-section {
+      padding: 80px 0;
+    }
+    
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .hero-title {
       font-size: 36px;
     }
     
-    .index-slideshow-caption-subtitle {
+    .hero-subtitle {
       font-size: 20px;
     }
     
-    .index-slideshow-caption-description {
+    .hero-description {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 28px;
+    }
+    
+    .hero-subtitle {
+      font-size: 18px;
+    }
+    
+    .hero-description {
       font-size: 14px;
     }
     
-    .index-slideshow-caption-group {
-      padding: 20px;
-      max-width: 90%;
-    }
-    
-    .show-for-large {
-      display: none !important;
+    .hero-button {
+      padding: 15px 25px;
+      font-size: 14px;
     }
   }
 </style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const swiperContainer = document.querySelector('[data-slideshow-container]');
-    if (swiperContainer) {
-      // Simple slideshow functionality
-      let currentSlide = 0;
-      const slides = swiperContainer.querySelectorAll('.swiper-slide');
-      const bullets = document.querySelectorAll('.index-slideshow-pagination-bullet');
-      const prevBtn = document.querySelector('[data-slideshow-nav-prev]');
-      const nextBtn = document.querySelector('[data-slideshow-nav-next]');
-      
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('swiper-slide-active', i === index);
-        });
-        bullets.forEach((bullet, i) => {
-          bullet.classList.toggle('index-slideshow-pagination-bullet-active', i === index);
-        });
-        currentSlide = index;
-      }
-      
-      function nextSlide() {
-        const next = (currentSlide + 1) % slides.length;
-        showSlide(next);
-      }
-      
-      function prevSlide() {
-        const prev = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(prev);
-      }
-      
-      // Navigation event listeners
-      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-      
-      // Pagination event listeners
-      bullets.forEach((bullet, index) => {
-        bullet.addEventListener('click', () => showSlide(index));
-      });
-      
-      {% if section.settings.autoplay %}
-        // Auto-advance slides
-        setInterval(nextSlide, {{ section.settings.autoplay_speed | default: 6000 }});
-      {% endif %}
-    }
-  });
-</script>
-
 {% schema %}
 {
-  "name": "Hero Banner Slideshow",
+  "name": "Hero Banner",
   "tag": "section",
   "class": "hero-section",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "autoplay",
-      "label": "Auto-advance slides",
-      "default": false
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We introduction"
     },
     {
-      "type": "range",
-      "id": "autoplay_speed",
-      "min": 3000,
-      "max": 10000,
-      "step": 1000,
-      "unit": "ms",
-      "label": "Auto-advance speed",
-      "default": 6000
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "BeWild Organic"
     },
     {
-      "type": "checkbox",
-      "id": "show_pagination",
-      "label": "Show pagination dots",
-      "default": true
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover the pure essence of nature with our carefully curated collection of organic products, sourced directly from sustainable farms and wild harvesting practices."
     },
     {
-      "type": "checkbox",
-      "id": "show_navigation",
-      "label": "Show navigation arrows",
-      "default": true
-    }
-  ],
-  "blocks": [
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
     {
-      "type": "slide",
-      "name": "Slide",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "background_image",
-          "label": "Background Image"
-        },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtitle",
-          "default": "We introduction"
-        },
-        {
-          "type": "color",
-          "id": "subtitle_color",
-          "label": "Subtitle Color",
-          "default": "#4b3c35"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "BeWild Organic"
-        },
-        {
-          "type": "color",
-          "id": "title_color",
-          "label": "Title Color",
-          "default": "#344736"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Discover the pure essence of nature with our carefully curated collection of organic products, sourced directly from sustainable farms and wild harvesting practices."
-        },
-        {
-          "type": "color",
-          "id": "description_color",
-          "label": "Description Color",
-          "default": "#342e29"
-        },
-        {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "SHOP NOW"
-        },
-        {
-          "type": "url",
-          "id": "button_url",
-          "label": "Button URL",
-          "default": "/collections/all"
-        },
-        {
-          "type": "select",
-          "id": "text_position",
-          "label": "Text Position",
-          "options": [
-            {
-              "value": "position-left-center",
-              "label": "Left Center"
-            },
-            {
-              "value": "position-right-center",
-              "label": "Right Center"
-            },
-            {
-              "value": "position-center-center",
-              "label": "Center Center"
-            }
-          ],
-          "default": "position-right-center"
-        },
-        {
-          "type": "select",
-          "id": "text_align",
-          "label": "Text Alignment",
-          "options": [
-            {
-              "value": "align-left",
-              "label": "Left"
-            },
-            {
-              "value": "align-center",
-              "label": "Center"
-            },
-            {
-              "value": "align-right",
-              "label": "Right"
-            }
-          ],
-          "default": "align-left"
-        },
-        {
-          "type": "select",
-          "id": "entrance_effect",
-          "label": "Entrance Animation",
-          "options": [
-            {
-              "value": "slideInLeft",
-              "label": "Slide In Left"
-            },
-            {
-              "value": "slideInRight",
-              "label": "Slide In Right"
-            }
-          ],
-          "default": "slideInRight"
-        },
-        {
-          "type": "select",
-          "id": "exit_effect",
-          "label": "Exit Animation",
-          "options": [
-            {
-              "value": "slideOutLeft",
-              "label": "Slide Out Left"
-            },
-            {
-              "value": "slideOutRight",
-              "label": "Slide Out Right"
-            }
-          ],
-          "default": "slideOutLeft"
-        }
-      ]
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
     }
   ],
   "presets": [
     {
-      "name": "Hero Banner Slideshow",
-      "blocks": [
-        {
-          "type": "slide",
-          "settings": {
-            "subtitle": "We introduction",
-            "title": "BeWild Organic",
-            "description": "Discover the pure essence of nature with our carefully curated collection of organic products, sourced directly from sustainable farms and wild harvesting practices.",
-            "button_text": "SHOP NOW",
-            "button_url": "/collections/all",
-            "text_position": "position-right-center",
-            "entrance_effect": "slideInRight"
-          }
-        },
-        {
-          "type": "slide",
-          "settings": {
-            "subtitle": "We introduction",
-            "title": "BeWild Organic",
-            "description": "Experience the authentic taste of wild-harvested ingredients and organic produce that connects you directly with nature's bounty.",
-            "button_text": "SHOP NOW",
-            "button_url": "/collections/all",
-            "text_position": "position-left-center",
-            "entrance_effect": "slideInLeft"
-          }
-        }
-      ]
+      "name": "Hero Banner"
     }
   ]
 }
