@@ -1,0 +1,519 @@
+{% comment %}
+  BeWild Blog Posts Section
+  Replicating the "Latest News From Blog" section from Oars reference template
+{% endcomment %}
+
+<div class="blog-posts-section" id="blog-{{ section.id }}">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-heading">
+        {{ section.settings.section_heading | default: "Latest News From Our Blog" }}
+      </h2>
+      <p class="section-description">
+        {{ section.settings.section_description | default: "Stay updated with the latest insights on sustainable farming, organic living, and regenerative agriculture practices." }}
+      </p>
+    </div>
+    
+    <div class="blog-grid">
+      <!-- Blog Post 1 -->
+      <article class="blog-card">
+        <div class="blog-image">
+          {% if section.settings.blog_1_image %}
+            <img src="{{ section.settings.blog_1_image | img_url: '400x250' }}" 
+                 alt="{{ section.settings.blog_1_title }}" loading="lazy">
+          {% else %}
+            <div class="placeholder-image">📖</div>
+          {% endif %}
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="author">By {{ section.settings.blog_1_author | default: "BeWild Team" }}</span>
+            <span class="date">{{ section.settings.blog_1_date | default: "Jan 15, 2025" }}</span>
+          </div>
+          <h3 class="blog-title">
+            {{ section.settings.blog_1_title | default: "The Art of Regenerative Coffee Farming" }}
+          </h3>
+          <p class="blog-excerpt">
+            {{ section.settings.blog_1_excerpt | default: "Discover how our single-origin coffee farmers are restoring soil health while producing exceptional beans. Learn about the intersection of traditional knowledge and modern sustainable practices." }}
+          </p>
+          <a href="{{ section.settings.blog_1_link | default: '/blogs/news' }}" class="read-more">
+            Read more
+          </a>
+        </div>
+      </article>
+      
+      <!-- Blog Post 2 -->
+      <article class="blog-card">
+        <div class="blog-image">
+          {% if section.settings.blog_2_image %}
+            <img src="{{ section.settings.blog_2_image | img_url: '400x250' }}" 
+                 alt="{{ section.settings.blog_2_title }}" loading="lazy">
+          {% else %}
+            <div class="placeholder-image">🌾</div>
+          {% endif %}
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="author">By {{ section.settings.blog_2_author | default: "BeWild Team" }}</span>
+            <span class="date">{{ section.settings.blog_2_date | default: "Jan 10, 2025" }}</span>
+          </div>
+          <h3 class="blog-title">
+            {{ section.settings.blog_2_title | default: "Ancient Grains: Nutrition Rediscovered" }}
+          </h3>
+          <p class="blog-excerpt">
+            {{ section.settings.blog_2_excerpt | default: "Explore the nutritional powerhouse of heritage grains and pulses. From quinoa to millet, learn how these ancient superfoods are making a comeback in modern kitchens." }}
+          </p>
+          <a href="{{ section.settings.blog_2_link | default: '/blogs/news' }}" class="read-more">
+            Read more
+          </a>
+        </div>
+      </article>
+      
+      <!-- Blog Post 3 -->
+      <article class="blog-card">
+        <div class="blog-image">
+          {% if section.settings.blog_3_image %}
+            <img src="{{ section.settings.blog_3_image | img_url: '400x250' }}" 
+                 alt="{{ section.settings.blog_3_title }}" loading="lazy">
+          {% else %}
+            <div class="placeholder-image">🌿</div>
+          {% endif %}
+        </div>
+        <div class="blog-content">
+          <div class="blog-meta">
+            <span class="author">By {{ section.settings.blog_3_author | default: "BeWild Team" }}</span>
+            <span class="date">{{ section.settings.blog_3_date | default: "Jan 5, 2025" }}</span>
+          </div>
+          <h3 class="blog-title">
+            {{ section.settings.blog_3_title | default: "Spice Routes: Preserving Heritage Flavors" }}
+          </h3>
+          <p class="blog-excerpt">
+            {{ section.settings.blog_3_excerpt | default: "Journey through the traditional spice cultivation methods that have been passed down through generations. Learn how we're preserving these age-old techniques for future generations." }}
+          </p>
+          <a href="{{ section.settings.blog_3_link | default: '/blogs/news' }}" class="read-more">
+            Read more
+          </a>
+        </div>
+      </article>
+    </div>
+    
+    <div class="section-footer">
+      <a href="{{ section.settings.view_all_link | default: '/blogs/news' }}" class="btn btn-outline">
+        {{ section.settings.view_all_text | default: "View All Articles" }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .blog-posts-section {
+    padding: 100px 0;
+    background-color: white;
+    position: relative;
+  }
+  
+  .blog-posts-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 207, 131, 0.03) 0%, rgba(184, 220, 153, 0.03) 100%);
+    z-index: 1;
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .section-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #4b3c35; /* Authentic brown */
+    font-style: italic;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .blog-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(52, 46, 41, 0.1);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(52, 46, 41, 0.2);
+    border-color: #b8dc99; /* Approachable green */
+  }
+  
+  .blog-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .blog-card:hover .blog-image img {
+    transform: scale(1.1);
+  }
+  
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-color: #f8f6f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #999;
+  }
+  
+  .blog-content {
+    padding: 2rem;
+  }
+  
+  .blog-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #86312b; /* Assertive red-brown */
+  }
+  
+  .author,
+  .date {
+    font-weight: 500;
+  }
+  
+  .blog-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #342e29; /* Assertive dark brown */
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .blog-card:hover .blog-title {
+    color: #344736; /* Assertive green */
+  }
+  
+  .blog-excerpt {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b3c35; /* Authentic brown */
+    margin-bottom: 1.5rem;
+  }
+  
+  .read-more {
+    color: #344736; /* Assertive green */
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .read-more::after {
+    content: ' →';
+    transition: transform 0.3s ease;
+  }
+  
+  .read-more:hover {
+    color: #86312b; /* Assertive red-brown */
+  }
+  
+  .read-more:hover::after {
+    transform: translateX(5px);
+  }
+  
+  .section-footer {
+    text-align: center;
+  }
+  
+  .btn-outline {
+    background-color: transparent;
+    color: #344736; /* Assertive green */
+    border: 2px solid #344736;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.4s ease;
+  }
+  
+  .btn-outline:hover {
+    background-color: #344736;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 71, 54, 0.3);
+  }
+  
+  /* Animation for blog cards */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .blog-card:nth-child(1) { animation: fadeInUp 0.6s ease 0.1s both; }
+  .blog-card:nth-child(2) { animation: fadeInUp 0.6s ease 0.2s both; }
+  .blog-card:nth-child(3) { animation: fadeInUp 0.6s ease 0.3s both; }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .blog-posts-section {
+      padding: 80px 0;
+    }
+    
+    .blog-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    
+    .section-heading {
+      font-size: 2.5rem;
+    }
+    
+    .section-header {
+      margin-bottom: 60px;
+    }
+    
+    .blog-content {
+      padding: 1.5rem;
+    }
+    
+    .blog-image {
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .section-heading {
+      font-size: 2rem;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+    }
+    
+    .blog-content {
+      padding: 1.2rem;
+    }
+    
+    .blog-title {
+      font-size: 1.2rem;
+    }
+    
+    .blog-excerpt {
+      font-size: 0.95rem;
+    }
+    
+    .blog-meta {
+      font-size: 0.85rem;
+    }
+    
+    .btn-outline {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Blog Posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Latest News From Our Blog"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Stay updated with the latest insights on sustainable farming, organic living, and regenerative agriculture practices."
+    },
+    {
+      "type": "header",
+      "content": "Blog Post 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "blog_1_image",
+      "label": "Blog 1 Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "blog_1_title",
+      "label": "Blog 1 Title",
+      "default": "The Art of Regenerative Coffee Farming"
+    },
+    {
+      "type": "text",
+      "id": "blog_1_author",
+      "label": "Blog 1 Author",
+      "default": "BeWild Team"
+    },
+    {
+      "type": "text",
+      "id": "blog_1_date",
+      "label": "Blog 1 Date",
+      "default": "Jan 15, 2025"
+    },
+    {
+      "type": "textarea",
+      "id": "blog_1_excerpt",
+      "label": "Blog 1 Excerpt",
+      "default": "Discover how our single-origin coffee farmers are restoring soil health while producing exceptional beans. Learn about the intersection of traditional knowledge and modern sustainable practices."
+    },
+    {
+      "type": "url",
+      "id": "blog_1_link",
+      "label": "Blog 1 Link"
+    },
+    {
+      "type": "header",
+      "content": "Blog Post 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "blog_2_image",
+      "label": "Blog 2 Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "blog_2_title",
+      "label": "Blog 2 Title",
+      "default": "Ancient Grains: Nutrition Rediscovered"
+    },
+    {
+      "type": "text",
+      "id": "blog_2_author",
+      "label": "Blog 2 Author",
+      "default": "BeWild Team"
+    },
+    {
+      "type": "text",
+      "id": "blog_2_date",
+      "label": "Blog 2 Date",
+      "default": "Jan 10, 2025"
+    },
+    {
+      "type": "textarea",
+      "id": "blog_2_excerpt",
+      "label": "Blog 2 Excerpt",
+      "default": "Explore the nutritional powerhouse of heritage grains and pulses. From quinoa to millet, learn how these ancient superfoods are making a comeback in modern kitchens."
+    },
+    {
+      "type": "url",
+      "id": "blog_2_link",
+      "label": "Blog 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Blog Post 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "blog_3_image",
+      "label": "Blog 3 Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "blog_3_title",
+      "label": "Blog 3 Title",
+      "default": "Spice Routes: Preserving Heritage Flavors"
+    },
+    {
+      "type": "text",
+      "id": "blog_3_author",
+      "label": "Blog 3 Author",
+      "default": "BeWild Team"
+    },
+    {
+      "type": "text",
+      "id": "blog_3_date",
+      "label": "Blog 3 Date",
+      "default": "Jan 5, 2025"
+    },
+    {
+      "type": "textarea",
+      "id": "blog_3_excerpt",
+      "label": "Blog 3 Excerpt",
+      "default": "Journey through the traditional spice cultivation methods that have been passed down through generations. Learn how we're preserving these age-old techniques for future generations."
+    },
+    {
+      "type": "url",
+      "id": "blog_3_link",
+      "label": "Blog 3 Link"
+    },
+    {
+      "type": "header",
+      "content": "Section Footer"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Articles"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Articles Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Posts"
+    }
+  ]
+}
+{% endschema %} 

@@ -1,0 +1,604 @@
+{% comment %}
+  BeWild Footer Section
+  Replicating the footer structure from Oars reference template
+{% endcomment %}
+
+<footer class="site-footer" id="footer-{{ section.id }}">
+  <div class="container">
+    <div class="footer-content">
+      
+      <!-- Contact Information -->
+      <div class="footer-column">
+        <h3 class="footer-heading">Contact Our Farm</h3>
+        <p class="footer-description">
+          {{ section.settings.contact_description | default: "Connect with us to learn more about our sustainable farming practices and organic products." }}
+        </p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span class="contact-text">{{ section.settings.address | default: "123 Organic Farm Road, Green Valley, State 12345" }}</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span class="contact-text">{{ section.settings.phone | default: "+1 (555) 123-4567" }}</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span class="contact-text">{{ section.settings.email | default: "hello@bewild.farm" }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Social Media -->
+      <div class="footer-column">
+        <h3 class="footer-heading">Follow Us</h3>
+        <p class="footer-description">
+          {{ section.settings.social_description | default: "Stay connected with our journey toward sustainable agriculture and organic living." }}
+        </p>
+        <div class="social-links">
+          {% if section.settings.facebook_url %}
+            <a href="{{ section.settings.facebook_url }}" class="social-link facebook" target="_blank" rel="noopener">
+              <span class="social-icon">📘</span>
+              <span class="social-text">Facebook</span>
+            </a>
+          {% endif %}
+          {% if section.settings.instagram_url %}
+            <a href="{{ section.settings.instagram_url }}" class="social-link instagram" target="_blank" rel="noopener">
+              <span class="social-icon">📷</span>
+              <span class="social-text">Instagram</span>
+            </a>
+          {% endif %}
+          {% if section.settings.twitter_url %}
+            <a href="{{ section.settings.twitter_url }}" class="social-link twitter" target="_blank" rel="noopener">
+              <span class="social-icon">🐦</span>
+              <span class="social-text">Twitter</span>
+            </a>
+          {% endif %}
+          {% if section.settings.youtube_url %}
+            <a href="{{ section.settings.youtube_url }}" class="social-link youtube" target="_blank" rel="noopener">
+              <span class="social-icon">📺</span>
+              <span class="social-text">YouTube</span>
+            </a>
+          {% endif %}
+          {% if section.settings.tiktok_url %}
+            <a href="{{ section.settings.tiktok_url }}" class="social-link tiktok" target="_blank" rel="noopener">
+              <span class="social-icon">🎵</span>
+              <span class="social-text">TikTok</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      
+      <!-- Useful Links -->
+      <div class="footer-column">
+        <h3 class="footer-heading">Useful Links</h3>
+        <nav class="footer-nav">
+          <a href="{{ section.settings.about_link | default: '/pages/about-us' }}" class="footer-link">About Us</a>
+          <a href="{{ section.settings.sustainability_link | default: '/pages/sustainability' }}" class="footer-link">Sustainability</a>
+          <a href="{{ section.settings.farming_link | default: '/pages/farming-practices' }}" class="footer-link">Farming Practices</a>
+          <a href="{{ section.settings.contact_link | default: '/pages/contact' }}" class="footer-link">Contact Us</a>
+          <a href="{{ section.settings.blog_link | default: '/blogs/news' }}" class="footer-link">Our Blog</a>
+          <a href="{{ section.settings.faq_link | default: '/pages/faq' }}" class="footer-link">FAQ</a>
+        </nav>
+      </div>
+      
+      <!-- Policies -->
+      <div class="footer-column">
+        <h3 class="footer-heading">Policies</h3>
+        <nav class="footer-nav">
+          <a href="{{ section.settings.privacy_link | default: '/policies/privacy-policy' }}" class="footer-link">Privacy Policy</a>
+          <a href="{{ section.settings.terms_link | default: '/policies/terms-of-service' }}" class="footer-link">Terms of Service</a>
+          <a href="{{ section.settings.shipping_link | default: '/policies/shipping-policy' }}" class="footer-link">Shipping Policy</a>
+          <a href="{{ section.settings.refund_link | default: '/policies/refund-policy' }}" class="footer-link">Refund Policy</a>
+        </nav>
+      </div>
+      
+    </div>
+    
+    <!-- Newsletter Section -->
+    <div class="footer-newsletter">
+      <div class="newsletter-content">
+        <h3 class="newsletter-heading">{{ section.settings.newsletter_heading | default: "Subscribe to Our Newsletter" }}</h3>
+        <p class="newsletter-description">
+          {{ section.settings.newsletter_description | default: "Get the latest updates on organic products, farming tips, and sustainable living insights." }}
+        </p>
+      </div>
+      <div class="newsletter-form">
+        {% form 'customer' %}
+          <div class="form-group">
+            <input type="email" 
+                   name="contact[email]" 
+                   placeholder="{{ section.settings.newsletter_placeholder | default: 'Enter your email address' }}"
+                   required
+                   class="newsletter-input">
+            <button type="submit" class="newsletter-btn">
+              {{ section.settings.newsletter_button | default: "Subscribe" }}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          <p>&copy; {{ 'now' | date: '%Y' }} {{ section.settings.company_name | default: "BeWild" }}. All rights reserved.</p>
+        </div>
+        <div class="footer-tagline">
+          <p>{{ section.settings.footer_tagline | default: "Bringing Nature to Your Table" }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: linear-gradient(135deg, #342e29 0%, #4b3c35 100%);
+    color: white;
+    padding: 80px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(184, 220, 153, 0.05) 0%, rgba(255, 207, 131, 0.05) 100%);
+    z-index: 1;
+  }
+  
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  
+  .footer-column {
+    animation: fadeInUp 0.6s ease both;
+  }
+  
+  .footer-heading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffcf83; /* Approachable yellow */
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .footer-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f0f0f0;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .contact-icon {
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  
+  .contact-text {
+    color: #f0f0f0;
+  }
+  
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+  }
+  
+  .social-link:hover {
+    color: #b8dc99; /* Approachable green */
+    transform: translateX(5px);
+  }
+  
+  .social-icon {
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  
+  .footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .footer-link {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0;
+  }
+  
+  .footer-link:hover {
+    color: #b8dc99; /* Approachable green */
+    transform: translateX(5px);
+  }
+  
+  .footer-newsletter {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 3rem;
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .newsletter-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffcf83; /* Approachable yellow */
+    margin-bottom: 1rem;
+  }
+  
+  .newsletter-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f0f0f0;
+    opacity: 0.9;
+  }
+  
+  .form-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .newsletter-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+  
+  .newsletter-input:focus {
+    outline: none;
+    border-color: #b8dc99; /* Approachable green */
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .newsletter-btn {
+    background: linear-gradient(135deg, #344736, #415c43);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .newsletter-btn:hover {
+    background: linear-gradient(135deg, #415c43, #344736);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 71, 54, 0.3);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+  }
+  
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .copyright p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+  
+  .footer-tagline p {
+    font-size: 0.95rem;
+    color: #ffcf83; /* Approachable yellow */
+    margin: 0;
+    font-style: italic;
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: 60px 0 0;
+    }
+    
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-newsletter {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      margin-bottom: 40px;
+    }
+    
+    .newsletter-heading {
+      font-size: 1.4rem;
+    }
+    
+    .form-group {
+      flex-direction: column;
+    }
+    
+    .footer-bottom-content {
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer-newsletter {
+      padding: 1.5rem;
+    }
+    
+    .newsletter-heading {
+      font-size: 1.2rem;
+    }
+    
+    .newsletter-description {
+      font-size: 1rem;
+    }
+    
+    .footer-heading {
+      font-size: 1.2rem;
+    }
+    
+    .newsletter-input,
+    .newsletter-btn {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_description",
+      "label": "Contact Description",
+      "default": "Connect with us to learn more about our sustainable farming practices and organic products."
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "123 Organic Farm Road, Green Valley, State 12345"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+1 (555) 123-4567"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address",
+      "default": "hello@bewild.farm"
+    },
+    {
+      "type": "header",
+      "content": "Social Media"
+    },
+    {
+      "type": "textarea",
+      "id": "social_description",
+      "label": "Social Description",
+      "default": "Stay connected with our journey toward sustainable agriculture and organic living."
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "header",
+      "content": "Useful Links"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About Us Link"
+    },
+    {
+      "type": "url",
+      "id": "sustainability_link",
+      "label": "Sustainability Link"
+    },
+    {
+      "type": "url",
+      "id": "farming_link",
+      "label": "Farming Practices Link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact Us Link"
+    },
+    {
+      "type": "url",
+      "id": "blog_link",
+      "label": "Blog Link"
+    },
+    {
+      "type": "url",
+      "id": "faq_link",
+      "label": "FAQ Link"
+    },
+    {
+      "type": "header",
+      "content": "Policy Links"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy Policy Link"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Terms of Service Link"
+    },
+    {
+      "type": "url",
+      "id": "shipping_link",
+      "label": "Shipping Policy Link"
+    },
+    {
+      "type": "url",
+      "id": "refund_link",
+      "label": "Refund Policy Link"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "Subscribe to Our Newsletter"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_description",
+      "label": "Newsletter Description",
+      "default": "Get the latest updates on organic products, farming tips, and sustainable living insights."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Newsletter Input Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_button",
+      "label": "Newsletter Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Company Name",
+      "default": "BeWild"
+    },
+    {
+      "type": "text",
+      "id": "footer_tagline",
+      "label": "Footer Tagline",
+      "default": "Bringing Nature to Your Table"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %} 
